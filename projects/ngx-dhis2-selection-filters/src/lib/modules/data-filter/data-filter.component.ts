@@ -31,6 +31,7 @@ export class DataFilterComponent implements OnInit, OnDestroy {
   @Input() functionMappings: any[] = [];
   @Input() hiddenDataElements: any[] = [];
   @Input() singleSelection: boolean = false;
+  selectedGroupId: string;
 
   showGroupingPanel: boolean;
   private _selectedItems: any[];
@@ -82,9 +83,22 @@ export class DataFilterComponent implements OnInit, OnDestroy {
     this.arrowRightIcon = ARROW_RIGHT_ICON;
 
     this.showGroupingPanel = false;
+
+    this.selectedGroups = [
+      {
+        id: `group_1`,
+        name: `Untitled Group 1`,
+        current: true,
+        members: []
+      }
+    ];
   }
 
   ngOnInit() {
+    // set selected data group
+    this.selectedGroupId = this.selectedGroups[0]
+      ? this.selectedGroups[0].id
+      : 'group_1';
     // TODO revamp period filter to accomodate more data dimensions criterion
     this.initiateData();
     this._selectedItems = [...this.selectedItems];
@@ -668,6 +682,14 @@ export class DataFilterComponent implements OnInit, OnDestroy {
   onToggleGroupingPanel(e) {
     e.stopPropagation();
     this.showGroupingPanel = !this.showGroupingPanel;
+  }
+
+  onDataGroupsUpdate(dataGroups) {
+    this.selectedGroups = dataGroups;
+  }
+
+  onSelectedGroupUpdate(selectedGroupId: string) {
+    this.selectedGroupId = selectedGroupId;
   }
 
   ngOnDestroy() {

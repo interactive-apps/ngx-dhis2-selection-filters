@@ -3,7 +3,10 @@ import {
   OnInit,
   Input,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  Output,
+  EventEmitter,
+  OnDestroy
 } from '@angular/core';
 import { DRAG_ICON, ARROW_DOWN_ICON } from '../../icons';
 import * as _ from 'lodash';
@@ -13,10 +16,14 @@ import * as _ from 'lodash';
   templateUrl: './data-filter-groups.component.html',
   styleUrls: ['./data-filter-groups.component.css']
 })
-export class DataFilterGroupsComponent implements OnInit, OnChanges {
+export class DataFilterGroupsComponent implements OnInit, OnChanges, OnDestroy {
   @Input() dataGroups: any[];
   @Input() selectedItems: any[];
   @Input() selectedGroupId: string;
+
+  @Output() dataGroupsUpdate: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Output()
+  selectedGroupUpdate: EventEmitter<string> = new EventEmitter<string>();
   // icons
   dragIcon: string;
   arrowDownIcon: string;
@@ -43,8 +50,6 @@ export class DataFilterGroupsComponent implements OnInit, OnChanges {
 
   ngOnChanges(simpleChanges: SimpleChanges) {
     if (simpleChanges['selectedItems']) {
-      console.log(this.selectedItems);
-
       if (this.dataGroups.length === 1) {
         this.dataGroups = _.map(this.dataGroups, dataGroup => {
           return {
@@ -96,18 +101,7 @@ export class DataFilterGroupsComponent implements OnInit, OnChanges {
           }
         );
       }
-      // console.log(
-      //   this.dataGroups,
-      //   _.map(this.dataGroupsVm, dataGroup => {
-      //     return {
-      //       ...dataGroup,
-      //       elements:
-      //         dataGroup.current && this.selectedItems
-      //           ? this.selectedItems
-      //           : dataGroup.elements
-      //     };
-      //   })
-      // );
+      this.dataGroupsUpdate.emit(this.dataGroups);
     }
   }
 
@@ -127,6 +121,8 @@ export class DataFilterGroupsComponent implements OnInit, OnChanges {
         members: []
       }
     ];
+
+    this.dataGroupsUpdate.emit(this.dataGroups);
   }
 
   onSetCurrentGroup(currentDataGroup, e) {
@@ -137,5 +133,13 @@ export class DataFilterGroupsComponent implements OnInit, OnChanges {
         current: dataGroup.id === currentDataGroup.id && !dataGroup.current
       };
     });
+
+    this.dataGroupsUpdate.emit(this.dataGroups);
+    this.selectedGroupUpdate.emit(currentDataGroup.id);
+  }
+
+  ngOnDestroy() {
+    this.dataGroupsUpdate.emit(this.dataGroups);
+    this.selectedGroupUpdate.emit(this.selectedGroupId);
   }
 }
