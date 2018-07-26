@@ -23,9 +23,8 @@ export class DataFilterComponent implements OnInit, OnDestroy {
   dataGroups: any[] = [];
   selectedGroup: any = { id: 'ALL', name: '[ All ]' };
 
-  @Output() onDataUpdate: EventEmitter<any> = new EventEmitter<any>();
-  @Output()
-  onDataFilterClose: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() dataFilterUpdate: EventEmitter<any> = new EventEmitter<any>();
+  @Output() dataFilterClose: EventEmitter<any> = new EventEmitter<any>();
   @Input() selectedItems: any[] = [];
   @Input() selectedGroups: any[] = [];
   @Input() functionMappings: any[] = [];
@@ -538,16 +537,10 @@ export class DataFilterComponent implements OnInit, OnDestroy {
 
   emit(e) {
     e.stopPropagation();
-    this.onDataUpdate.emit({
-      itemList: this._selectedItems,
-      need_functions: this.getFunctions(this._selectedItems),
-      auto_growing: this.getAutogrowingTables(this._selectedItems),
-      selectedData: {
-        name: 'dx',
-        value: this.getDataForAnalytics(this._selectedItems)
-      },
-      hideQuarter: this.hideQuarter,
-      hideMonth: this.hideMonth
+    this.dataFilterUpdate.emit({
+      items: this._selectedItems,
+      groups: this.selectedGroups,
+      dimension: 'dx'
     });
   }
 
@@ -624,7 +617,11 @@ export class DataFilterComponent implements OnInit, OnDestroy {
 
   close(e) {
     e.stopPropagation();
-    this.onDataFilterClose.emit(true);
+    this.dataFilterClose.emit({
+      items: this._selectedItems,
+      groups: this.selectedGroups,
+      dimension: 'dx'
+    });
   }
 
   toggleDataFilterOption(toggledOption, event) {
@@ -693,6 +690,11 @@ export class DataFilterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.dataFilterClose.emit({
+      items: this._selectedItems,
+      groups: this.selectedGroups,
+      dimension: 'dx'
+    });
     this.subscription.unsubscribe();
   }
 }

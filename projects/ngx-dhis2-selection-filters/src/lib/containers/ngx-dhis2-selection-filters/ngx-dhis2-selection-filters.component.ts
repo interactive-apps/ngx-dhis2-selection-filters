@@ -112,6 +112,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
         selectedItems
       )
     ];
+    console.log(this.dataSelections);
     this.filterUpdate.emit(this.dataSelections);
     this.selectedFilter = '';
     this.showFilterBody = false;
@@ -125,13 +126,17 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
       'dimension',
       selectedObject.dimension
     ]);
-    const selectedDimensionIndex = dataSelections.indexOf(selectedDimension);
+    const selectedDimensionIndex = selectedDimension
+      ? dataSelections.indexOf(selectedDimension)
+      : -1;
     return selectedDimension
       ? [
           ...dataSelections.slice(0, selectedDimensionIndex),
           { ...selectedDimension, ...selectedObject },
           ...dataSelections.slice(selectedDimensionIndex + 1)
         ]
-      : dataSelections;
+      : dataSelections
+        ? [...dataSelections, selectedObject]
+        : [selectedObject];
   }
 }
