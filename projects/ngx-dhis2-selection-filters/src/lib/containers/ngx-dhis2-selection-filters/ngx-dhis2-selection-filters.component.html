@@ -56,8 +56,8 @@
     <!--end of data filter
 
     <!--period filter-->
-    <!-- <app-period-filter *ngIf="selectedFilter === 'PERIOD'" [selectedPeriods]="selectedPeriods" (onPeriodFilterClose)="onFilterClose($event, 'PERIOD')"
-      (onPeriodUpdate)="onFilterUpdate($event, 'PERIOD')"></app-period-filter> -->
+    <app-period-filter *ngIf="selectedFilter === 'PERIOD'" [selectedPeriods]="selectedPeriods" (periodFilterClose)="onFilterClose($event, 'PERIOD')"
+      (periodFilterUpdate)="onFilterUpdate($event, 'PERIOD')"></app-period-filter>
     <!--end of period filter-->
 
     <!--org unit filter-->

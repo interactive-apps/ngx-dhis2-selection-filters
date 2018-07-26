@@ -5,6 +5,7 @@ import { PeriodService } from './period.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'app-period-filter',
   templateUrl: './period-filter.component.html',
   styleUrls: ['./period-filter.component.css']
@@ -19,8 +20,8 @@ export class PeriodFilterComponent implements OnInit {
     emitOnSelection: false,
     singleSelection: false
   };
-  @Output() onPeriodUpdate = new EventEmitter();
-  @Output() onPeriodFilterClose = new EventEmitter();
+  @Output() periodFilterUpdate = new EventEmitter();
+  @Output() periodFilterClose = new EventEmitter();
   availablePeriods: any[];
   periods$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   selectedPeriods$: Observable<any>;
@@ -43,7 +44,9 @@ export class PeriodFilterComponent implements OnInit {
 
   ngOnInit() {
     if (!this.selectedPeriodType || this.selectedPeriodType === '') {
-      this.selectedPeriodType = this.periodService.deduceSelectedPeriodType(this.selectedPeriods);
+      this.selectedPeriodType = this.periodService.deduceSelectedPeriodType(
+        this.selectedPeriods
+      );
     }
 
     this._periods = this.getPeriods(
@@ -82,7 +85,10 @@ export class PeriodFilterComponent implements OnInit {
       this.deselectAllPeriods(e);
     }
     e.stopPropagation();
-    const periodIndex = _.findIndex(this._periods, _.find(this._periods, ['id', period.id]));
+    const periodIndex = _.findIndex(
+      this._periods,
+      _.find(this._periods, ['id', period.id])
+    );
 
     if (periodIndex !== -1) {
       if (period.selected) {
@@ -125,7 +131,11 @@ export class PeriodFilterComponent implements OnInit {
       ? []
       : this._periods.filter(period => period.selected);
 
-    this._periods = this.getPeriods(periodType, this.selectedYear, selectedPeriods);
+    this._periods = this.getPeriods(
+      periodType,
+      this.selectedYear,
+      selectedPeriods
+    );
     this.periods$.next(this._periods);
   }
 
@@ -187,16 +197,21 @@ export class PeriodFilterComponent implements OnInit {
   }
 
   getPeriodOutput() {
-    const selectedPeriods = this._periods.filter((period: any) => period.selected);
-    this.onPeriodUpdate.emit({
-      items: selectedPeriods,
-      name: 'pe',
-      value: selectedPeriods.map(period => period.id).join(';')
+    this.periodFilterUpdate.emit({
+      items: this.getSelectedPeriods(),
+      dimension: 'pe'
     });
+  }
+
+  getSelectedPeriods() {
+    return this._periods.filter((period: any) => period.selected);
   }
 
   closePeriodFilter(e) {
     e.stopPropagation();
-    this.onPeriodFilterClose.emit(true);
+    this.periodFilterClose.emit({
+      items: this.getSelectedPeriods(),
+      dimension: 'pe'
+    });
   }
 }

@@ -12,6 +12,7 @@ import { DRAG_ICON, ARROW_DOWN_ICON } from '../../icons';
 import * as _ from 'lodash';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'app-data-filter-groups',
   templateUrl: './data-filter-groups.component.html',
   styleUrls: ['./data-filter-groups.component.css']

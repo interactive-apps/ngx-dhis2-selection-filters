@@ -13,6 +13,7 @@ import { DATA_FILTER_OPTIONS } from './data-filter.model';
 import { LIST_ICON, ARROW_LEFT_ICON, ARROW_RIGHT_ICON } from './icons';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'app-data-filter',
   templateUrl: './data-filter.component.html',
   styleUrls: ['./data-filter.component.css']
@@ -29,7 +30,7 @@ export class DataFilterComponent implements OnInit, OnDestroy {
   @Input() selectedGroups: any[] = [];
   @Input() functionMappings: any[] = [];
   @Input() hiddenDataElements: any[] = [];
-  @Input() singleSelection: boolean = false;
+  @Input() singleSelection = false;
   selectedGroupId: string;
 
   showGroupingPanel: boolean;
