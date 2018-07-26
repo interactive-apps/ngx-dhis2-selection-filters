@@ -1,0 +1,9 @@
+{
+  "name": "@hisptz/ngx-dhis2-selection-filters",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "lodash": "^4.17.10"
+  }
+}
