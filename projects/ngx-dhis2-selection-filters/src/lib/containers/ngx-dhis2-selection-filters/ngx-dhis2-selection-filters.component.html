@@ -61,8 +61,8 @@
     <!--end of period filter-->
 
     <!--org unit filter-->
-    <!-- <app-org-unit-filter *ngIf="selectedFilter === 'ORG_UNIT'" [selectedOrgUnits]="selectedOrgUnits" (orgUnitClose)="onFilterClose($event, 'ORG_UNIT')"
-      (orgUnitUpdate)="onFilterUpdate($event, 'ORG_UNIT')"></app-org-unit-filter> -->
+    <ngx-dhis2-org-unit-filter *ngIf="selectedFilter === 'ORG_UNIT'" [selectedOrgUnitItems]="selectedOrgUnits" (orgUnitClose)="onFilterClose($event, 'ORG_UNIT')"
+      (orgUnitUpdate)="onFilterUpdate($event, 'ORG_UNIT')"></ngx-dhis2-org-unit-filter>
     <!--end of org unit filter-->
   </div>
   <!--end of selection filter body-->
