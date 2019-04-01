@@ -5,6 +5,7 @@
     "@angular/common": "^6.0.0 || ^7.0.0",
     "@angular/core": "^6.0.0 || ^7.0.0",
     "lodash": "^4.17.10",
-    "angular-tree-component": "^7.2.1"
+    "angular-tree-component": "^7.2.1",
+    "@hisptz/ngx-dhis2-org-unit-filter": "^1.0.13"
   }
 }

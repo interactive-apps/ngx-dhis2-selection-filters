@@ -9,6 +9,8 @@ import {
   ARROW_DOWN_ICON,
   TREE_ICON
 } from '../../icons';
+import { SelectionFilterConfig } from '../../models/selected-filter-config.model';
+import { SELECTION_FILTER_CONFIG } from '../../constants/selection-filter-config.constant';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -17,11 +19,16 @@ import {
   styleUrls: ['./ngx-dhis2-selection-filters.component.css']
 })
 export class NgxDhis2SelectionFiltersComponent implements OnInit {
-  @Input() dataSelections: any[];
-  @Output() filterUpdate: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Input()
+  dataSelections: any[];
+  @Input()
+  layout: any;
+  @Input()
+  selectionFilterConfig: SelectionFilterConfig;
+  @Output()
+  filterUpdate: EventEmitter<any[]> = new EventEmitter<any[]>();
   showFilters: boolean;
   showFilterBody: boolean;
-  selectedFilter: string;
 
   // icons
   filterIcon: string;
@@ -31,10 +38,10 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   dataIcon: string;
   periodIcon: string;
   orgUnitIcon: string;
+  selectedFilter: string;
 
   constructor() {
     this.showFilters = this.showFilterBody = false;
-    this.selectedFilter = 'DATA';
 
     // icons initializations
     this.filterIcon = FILTER_ICON;
@@ -49,6 +56,14 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   get selectedData(): any[] {
     const dataObject = _.find(this.dataSelections, ['dimension', 'dx']);
     return dataObject ? dataObject.items : [];
+  }
+
+  get selectedDynamicDimensions(): any[] {
+    return _.filter(
+      this.dataSelections || [],
+      (dataSelection: any) =>
+        ['ou', 'pe', 'dx', 'co', 'dy'].indexOf(dataSelection.dimension) === -1
+    );
   }
 
   get selectedDataGroups(): any[] {
@@ -66,7 +81,37 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
     return dataObject ? dataObject.items : [];
   }
 
-  ngOnInit() {}
+  get layoutItem(): any {
+    return _.groupBy(
+      _.map(this.dataSelections, dataSelection => {
+        return {
+          name: dataSelection.name,
+          value: dataSelection.dimension,
+          layout: dataSelection.layout
+        };
+      }),
+      'layout'
+    );
+  }
+
+  get filterConfig(): SelectionFilterConfig {
+    return {
+      ...SELECTION_FILTER_CONFIG,
+      ...(this.selectionFilterConfig || {})
+    };
+  }
+
+  ngOnInit() {
+    this.selectedFilter = this.filterConfig.showDataFilter
+      ? 'DATA'
+      : this.filterConfig.showPeriodFilter
+      ? 'PERIOD'
+      : this.filterConfig.showOrgUnitFilter
+      ? 'ORG_UNIT'
+      : this.filterConfig.showLayout
+      ? 'LAYOUT'
+      : '';
+  }
 
   toggleFilters(e) {
     e.stopPropagation();
@@ -90,13 +135,83 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   }
 
   onFilterClose(selectedItems, selectedFilter) {
-    if (selectedItems && selectedItems.items.length > 0) {
-      this.dataSelections = [
-        ...this.updateDataSelectionWithNewSelections(
-          this.dataSelections,
-          selectedItems
-        )
-      ];
+    if (selectedFilter === 'LAYOUT') {
+      const layouts = _.flatten(
+        _.map(_.keys(selectedItems), (selectedItemKey: string) => {
+          return _.map(
+            selectedItems[selectedItemKey],
+            (selectedItem: any, selectedItemIndex: number) => {
+              return {
+                ...selectedItem,
+                layout: selectedItemKey,
+                layoutOrder: selectedItemIndex
+              };
+            }
+          );
+        })
+      );
+
+      this.dataSelections = _.sortBy(
+        _.map(this.dataSelections || [], (dataSelection: any) => {
+          const availableDataSelectionLayout = _.find(layouts, [
+            'value',
+            dataSelection.dimension
+          ]);
+
+          return availableDataSelectionLayout
+            ? {
+                ...dataSelection,
+                layout: availableDataSelectionLayout.layout,
+                layoutOrder: availableDataSelectionLayout.layoutOrder
+              }
+            : dataSelection;
+        }),
+        'layoutOrder'
+      );
+    } else {
+      if (selectedItems) {
+        if (_.isArray(selectedItems)) {
+          // Remove all dynamic dimension selections first
+          this.dataSelections = _.filter(
+            this.dataSelections || [],
+            (dataSelection: any) =>
+              ['ou', 'pe', 'dx', 'co', 'dy'].indexOf(
+                dataSelection.dimension
+              ) !== -1
+          );
+          _.each(selectedItems, (selectedItem: any) => {
+            this.dataSelections = !_.find(this.dataSelections, [
+              'dimension',
+              selectedItem.dimension
+            ])
+              ? [
+                  ...(this.dataSelections || []),
+                  { ...selectedItem, layout: 'filters' }
+                ]
+              : [
+                  ...this.updateDataSelectionWithNewSelections(
+                    this.dataSelections || [],
+                    selectedItem
+                  )
+                ];
+          });
+        } else if (selectedItems.items.length > 0) {
+          this.dataSelections = !_.find(this.dataSelections, [
+            'dimension',
+            selectedItems.dimension
+          ])
+            ? [
+                ...(this.dataSelections || []),
+                { ...selectedItems, layout: 'columns' }
+              ]
+            : [
+                ...this.updateDataSelectionWithNewSelections(
+                  this.dataSelections || [],
+                  selectedItems
+                )
+              ];
+        }
+      }
     }
 
     if (this.selectedFilter === selectedFilter) {
@@ -106,13 +221,84 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   }
 
   onFilterUpdate(selectedItems, selectedFilter) {
-    this.dataSelections = [
-      ...this.updateDataSelectionWithNewSelections(
-        this.dataSelections,
-        selectedItems
-      )
-    ];
-    this.filterUpdate.emit(this.dataSelections);
+    if (selectedFilter === 'LAYOUT') {
+      const layouts = _.flatten(
+        _.map(_.keys(selectedItems), (selectedItemKey: string) => {
+          return _.map(
+            selectedItems[selectedItemKey] || [],
+            (selectedItem: any, selectedItemIndex: number) => {
+              return {
+                ...selectedItem,
+                layout: selectedItemKey,
+                layoutOrder: selectedItemIndex
+              };
+            }
+          );
+        })
+      );
+
+      this.dataSelections = _.sortBy(
+        _.map(this.dataSelections || [], (dataSelection: any) => {
+          const availableDataSelectionLayout = _.find(layouts, [
+            'value',
+            dataSelection.dimension
+          ]);
+
+          return availableDataSelectionLayout
+            ? {
+                ...dataSelection,
+                changed: true,
+                layout: availableDataSelectionLayout.layout,
+                layoutOrder: availableDataSelectionLayout.layoutOrder
+              }
+            : { ...dataSelection, changed: true };
+        }),
+        'layoutOrder'
+      );
+    } else {
+      if (_.isArray(selectedItems)) {
+        // Remove all dynamic dimension selections first
+        this.dataSelections = _.filter(
+          this.dataSelections || [],
+          (dataSelection: any) =>
+            ['ou', 'pe', 'dx', 'co', 'dy'].indexOf(dataSelection.dimension) !==
+            -1
+        );
+        _.each(selectedItems, (selectedItem: any) => {
+          this.dataSelections = !_.find(this.dataSelections, [
+            'dimension',
+            selectedItem.dimension
+          ])
+            ? [
+                ...(this.dataSelections || []),
+                { ...selectedItem, layout: 'filters' }
+              ]
+            : [
+                ...this.updateDataSelectionWithNewSelections(
+                  this.dataSelections || [],
+                  selectedItem
+                )
+              ];
+        });
+      } else {
+        this.dataSelections = !_.find(this.dataSelections, [
+          'dimension',
+          selectedItems.dimension
+        ])
+          ? [
+              ...(this.dataSelections || []),
+              { ...selectedItems, layout: 'columns' }
+            ]
+          : [
+              ...this.updateDataSelectionWithNewSelections(
+                this.dataSelections || [],
+                selectedItems
+              )
+            ];
+      }
+    }
+
+    this.filterUpdate.emit(this.dataSelections || []);
     this.selectedFilter = '';
     this.showFilterBody = false;
   }
@@ -135,7 +321,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
           ...dataSelections.slice(selectedDimensionIndex + 1)
         ]
       : dataSelections
-        ? [...dataSelections, selectedObject]
-        : [selectedObject];
+      ? [...dataSelections, selectedObject]
+      : [selectedObject];
   }
 }
