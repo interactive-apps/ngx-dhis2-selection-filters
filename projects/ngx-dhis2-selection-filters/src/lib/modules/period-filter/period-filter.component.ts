@@ -3,6 +3,7 @@ import * as fromPeriodFilterModel from './period-filter.model';
 import * as _ from 'lodash';
 import { PeriodService } from './period.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -65,19 +66,23 @@ export class PeriodFilterComponent implements OnInit {
   }
 
   updatePeriodsWithSelected(periods: any[], selectedPeriods: any[]) {
+    let newPeriods = [...periods];
     selectedPeriods.forEach((selectedPeriod: any) => {
-      const availablePeriod = _.find(periods, ['id', selectedPeriod.id]);
+      const availablePeriod = _.find(newPeriods, ['id', selectedPeriod.id]);
       if (availablePeriod) {
-        const periodIndex = _.findIndex(periods, availablePeriod);
-        availablePeriod.selected = true;
-        periods[periodIndex] = availablePeriod;
+        const periodIndex = _.findIndex(newPeriods, availablePeriod);
+
+        newPeriods = [
+          ..._.slice(newPeriods, 0, periodIndex),
+          { ...availablePeriod, selected: true },
+          ..._.slice(newPeriods, periodIndex + 1)
+        ];
       } else {
-        selectedPeriod.selected = true;
-        periods.push(selectedPeriod);
+        newPeriods = [...newPeriods, { ...selectedPeriod, selected: true }];
       }
     });
 
-    return periods;
+    return newPeriods;
   }
 
   togglePeriod(period, e) {
@@ -199,7 +204,8 @@ export class PeriodFilterComponent implements OnInit {
   getPeriodOutput() {
     this.periodFilterUpdate.emit({
       items: this.getSelectedPeriods(),
-      dimension: 'pe'
+      dimension: 'pe',
+      changed: true
     });
   }
 
