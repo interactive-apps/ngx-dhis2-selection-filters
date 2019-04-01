@@ -105,14 +105,13 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
     }
   }
 
-  onFilterUpdate(selectedItems) {
+  onFilterUpdate(selectedItems, selectedFilter) {
     this.dataSelections = [
       ...this.updateDataSelectionWithNewSelections(
         this.dataSelections,
         selectedItems
       )
     ];
-    console.log(this.dataSelections);
     this.filterUpdate.emit(this.dataSelections);
     this.selectedFilter = '';
     this.showFilterBody = false;
