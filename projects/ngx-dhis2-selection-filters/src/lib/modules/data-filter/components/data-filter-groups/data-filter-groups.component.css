@@ -33,6 +33,10 @@
   background-color: #eeeeee;
 }
 
+.data-filter-group_add-button img {
+  height: 15px;
+}
+
 .data-filter-group__list {
   max-height: 400px;
   margin-top: 5px;

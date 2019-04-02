@@ -9,7 +9,7 @@ import * as fromIndicatorReducer from '../reducers/indicator.reducer';
 import * as fromIndicatorActions from '../actions/indicator.actions';
 import * as fromIndicatorSelectors from '../selectors/indicator.selectors';
 import * as fromHelpers from '../../helpers';
-import * as fromServices from '../../services';
+import { IndicatorService } from '../../services/indicator.service';
 
 @Injectable()
 export class IndicatorEffects {
@@ -51,7 +51,7 @@ export class IndicatorEffects {
 
   constructor(
     private actions$: Actions,
-    private indicatorService: fromServices.IndicatorService,
+    private indicatorService: IndicatorService,
     private indicatorStore: Store<fromIndicatorReducer.State>
   ) {}
 }

@@ -9,7 +9,7 @@ import * as fromIndicatorGroupReducer from '../reducers/indicator-group.reducer'
 import * as fromIndicatorGroupActions from '../actions/indicator-group.actions';
 import * as fromIndicatorGroupSelectors from '../selectors/indicator-group.selectors';
 import * as fromHelpers from '../../helpers';
-import * as fromServices from '../../services';
+import { IndicatorGroupService } from '../../services/indicator-group.service';
 
 @Injectable()
 export class IndicatorGroupEffects {
@@ -53,7 +53,7 @@ export class IndicatorGroupEffects {
 
   constructor(
     private actions$: Actions,
-    private indicatorGroupService: fromServices.IndicatorGroupService,
+    private indicatorGroupService: IndicatorGroupService,
     private indicatorGroupStore: Store<fromIndicatorGroupReducer.State>
   ) {}
 }

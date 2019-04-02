@@ -22,16 +22,6 @@ function randomWithMax(max) {
   return Math.floor(Math.random() * max);
 }
 
-/**
- * Generate a valid DHIS2 uid. A valid DHIS2 uid is a 11 character string which starts with a letter from the ISO basic Latin alphabet.
- *
- * @return {string} A 11 character uid that always starts with a letter.
- *
- * @example
- * import { generateUid } from 'd2/lib/uid';
- *
- * generateUid();
- */
 export function generateUid() {
   // First char should be a letter
   let randomChars = letters.charAt(randomWithMax(letters.length));
@@ -44,19 +34,6 @@ export function generateUid() {
   return randomChars;
 }
 
-/**
- * Tests whether the given code is valid.
- *
- * @param {string} code The code to validate.
- * @return {boolean} Returns true if the code is valid, false otherwise.
- *
- * @example
- * import { isValidUid } from 'd2/lib/uid';
- *
- * isValidUid('JkWynlWMjJR'); // true
- * isValidUid('0kWynlWMjJR'); // false (Uid can not start with a number)
- * isValidUid('AkWy$lWMjJR'); // false (Uid can only contain alphanumeric characters.
- */
 export function isValidUid(code) {
   if (code == null) {
     // eslint-disable-line eqeqeq
