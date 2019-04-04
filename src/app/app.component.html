@@ -3,9 +3,14 @@
     <div class="col-12">
       <div class="card" style="margin-top: 70px; height: 600px;">
         <div class="card-body">
-          <h1 style="font-size: 40px; text-align: center;">DHIS2 Selection filters</h1>
+          <h1 style="font-size: 40px; text-align: center;">
+            DHIS2 Selection filters
+          </h1>
           <div>
-            <ngx-dhis2-selection-filters></ngx-dhis2-selection-filters>
+            <ngx-dhis2-selection-filters
+              [dataSelections]="[]"
+              [selectionFilterConfig]="{ showDataFilter: false }"
+            ></ngx-dhis2-selection-filters>
           </div>
         </div>
       </div>

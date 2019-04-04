@@ -25,7 +25,7 @@
     "@angular/router": "^7.2.11",
     "@hisptz/ngx-dhis2-http-client": "^1.0.2",
     "@hisptz/ngx-dhis2-org-unit-filter": "file:../ngx-dhis2-org-unit-filter/dist/ngx-dhis2-org-unit-filter/hisptz-ngx-dhis2-org-unit-filter-1.0.13.tgz",
-    "@hisptz/ngx-dhis2-selection-filters": "file:dist/ngx-dhis2-selection-filters/hisptz-ngx-dhis2-selection-filters-1.0.1.tgz",
+    "@hisptz/ngx-dhis2-selection-filters": "file:dist/ngx-dhis2-selection-filters/hisptz-ngx-dhis2-selection-filters-1.0.2.tgz",
     "@ngrx/effects": "^7.4.0",
     "@ngrx/entity": "^7.4.0",
     "@ngrx/store": "^7.4.0",
