@@ -1,5 +1,5 @@
 {
-  "name": "@hisptz/ngx-dhis2-selection-filters",
+  "name": "@iapps/ngx-dhis2-selection-filters",
   "version": "1.0.3",
   "peerDependencies": {
     "@angular/common": "^6.0.0 || ^7.0.0",
