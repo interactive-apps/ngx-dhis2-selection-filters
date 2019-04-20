@@ -1,4 +1,4 @@
-import { OrgUnitFilterConfig } from '@hisptz/ngx-dhis2-org-unit-filter';
+import { OrgUnitFilterConfig } from '@iapps/ngx-dhis2-org-unit-filter';
 
 export interface SelectionFilterConfig {
   showDataFilter?: boolean;
