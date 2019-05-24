@@ -26,7 +26,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   @Input()
   selectionFilterConfig: SelectionFilterConfig;
   @Output()
-  filterUpdate: EventEmitter<any[]> = new EventEmitter<any[]>();
+  update: EventEmitter<any[]> = new EventEmitter<any[]>();
   showFilters: boolean;
   showFilterBody: boolean;
 
@@ -183,6 +183,9 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
       }
     }
 
+    // set selection paremeters
+    this._setSelectionParameters();
+
     if (this.selectedFilter === selectedFilter) {
       this.selectedFilter = '';
       this.showFilterBody = false;
@@ -267,7 +270,10 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
       }
     }
 
-    this.filterUpdate.emit(this.dataSelections || []);
+    // set selection paremeters
+    this._setSelectionParameters();
+
+    this.update.emit(this.dataSelections || []);
     this.selectedFilter = '';
     this.showFilterBody = false;
   }

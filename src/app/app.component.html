@@ -10,6 +10,7 @@
             <ngx-dhis2-selection-filters
               [dataSelections]="[]"
               [selectionFilterConfig]="{ showDataFilter: false }"
+              (update)="onUpdate($event)"
             ></ngx-dhis2-selection-filters>
           </div>
         </div>
