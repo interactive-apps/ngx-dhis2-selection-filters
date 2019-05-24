@@ -75,21 +75,21 @@
     *ngIf="selectedFilter !== '' && showFilterBody"
   >
     <!--data filter-->
-    <app-data-filter
+    <ngx-dhis2-data-filter
       *ngIf="selectedFilter === 'DATA'"
       [selectedItems]="selectedData"
-      (dataFilterClose)="onFilterClose($event, 'DATA')"
-      (dataFilterUpdate)="onFilterUpdate($event, 'DATA')"
-    ></app-data-filter>
+      (close)="onFilterClose($event, 'DATA')"
+      (update)="onFilterUpdate($event, 'DATA')"
+    ></ngx-dhis2-data-filter>
     <!--end of data filter-->
 
     <!--period filter-->
-    <app-period-filter
+    <ngx-dhis2-period-filter
       *ngIf="selectedFilter === 'PERIOD'"
       [selectedPeriods]="selectedPeriods"
-      (periodFilterClose)="onFilterClose($event, 'PERIOD')"
-      (periodFilterUpdate)="onFilterUpdate($event, 'PERIOD')"
-    ></app-period-filter>
+      (close)="onFilterClose($event, 'PERIOD')"
+      (update)="onFilterUpdate($event, 'PERIOD')"
+    ></ngx-dhis2-period-filter>
     <!--end of period filter-->
 
     <!--org unit filter-->

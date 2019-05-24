@@ -40,6 +40,14 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   orgUnitIcon: string;
   selectedFilter: string;
 
+  // selections
+  selectedData: any[];
+  selectedDynamicDimensions: any[];
+  selectedDataGroups: any[];
+  selectedPeriods: any[];
+  selectedOrgUnits: any[];
+  filterConfig: SelectionFilterConfig;
+
   constructor() {
     this.showFilters = this.showFilterBody = false;
 
@@ -53,55 +61,16 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
     this.orgUnitIcon = TREE_ICON;
   }
 
-  get selectedData(): any[] {
-    const dataObject = _.find(this.dataSelections, ['dimension', 'dx']);
-    return dataObject ? dataObject.items : [];
-  }
-
-  get selectedDynamicDimensions(): any[] {
-    return _.filter(
-      this.dataSelections || [],
-      (dataSelection: any) =>
-        ['ou', 'pe', 'dx', 'co', 'dy'].indexOf(dataSelection.dimension) === -1
-    );
-  }
-
-  get selectedDataGroups(): any[] {
-    const dataObject = _.find(this.dataSelections, ['dimension', 'dx']);
-    return dataObject ? dataObject.groups : [];
-  }
-
-  get selectedPeriods(): any[] {
-    const dataObject = _.find(this.dataSelections, ['dimension', 'pe']);
-    return dataObject ? dataObject.items : [];
-  }
-
-  get selectedOrgUnits(): any[] {
-    const dataObject = _.find(this.dataSelections, ['dimension', 'ou']);
-    return dataObject ? dataObject.items : [];
-  }
-
-  get layoutItem(): any {
-    return _.groupBy(
-      _.map(this.dataSelections, dataSelection => {
-        return {
-          name: dataSelection.name,
-          value: dataSelection.dimension,
-          layout: dataSelection.layout
-        };
-      }),
-      'layout'
-    );
-  }
-
-  get filterConfig(): SelectionFilterConfig {
-    return {
-      ...SELECTION_FILTER_CONFIG,
-      ...(this.selectionFilterConfig || {})
-    };
-  }
-
   ngOnInit() {
+    // initialize data Selections
+    if (!this.dataSelections || !_.isArray(this.dataSelections)) {
+      this.dataSelections = [];
+    }
+
+    // set selection paremeters
+    this._setSelectionParameters();
+
+    // set current filter
     this.selectedFilter = this.filterConfig.showDataFilter
       ? 'DATA'
       : this.filterConfig.showPeriodFilter
@@ -323,5 +292,47 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
       : dataSelections
       ? [...dataSelections, selectedObject]
       : [selectedObject];
+  }
+
+  private _setSelectionParameters() {
+    // set data items
+    const dataObject = _.find(this.dataSelections, ['dimension', 'dx']);
+    this.selectedData = dataObject ? dataObject.items : [];
+
+    // set dynamic dimennsion
+    this.selectedDynamicDimensions = _.filter(
+      this.dataSelections || [],
+      (dataSelection: any) =>
+        ['ou', 'pe', 'dx', 'co', 'dy'].indexOf(dataSelection.dimension) === -1
+    );
+
+    // set data groups
+    this.selectedDataGroups = dataObject ? dataObject.groups : [];
+
+    // set periods
+    const periodObject = _.find(this.dataSelections, ['dimension', 'pe']);
+    this.selectedPeriods = periodObject ? periodObject.items : [];
+
+    // set org units
+    const orgUnitObject = _.find(this.dataSelections, ['dimension', 'ou']);
+    this.selectedOrgUnits = orgUnitObject ? orgUnitObject.items : [];
+
+    // set layout
+    const layoutItem = _.groupBy(
+      _.map(this.dataSelections, dataSelection => {
+        return {
+          name: dataSelection.name,
+          value: dataSelection.dimension,
+          layout: dataSelection.layout
+        };
+      }),
+      'layout'
+    );
+
+    // set configuration
+    this.filterConfig = {
+      ...SELECTION_FILTER_CONFIG,
+      ...(this.selectionFilterConfig || {})
+    };
   }
 }

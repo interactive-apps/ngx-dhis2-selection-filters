@@ -6,5 +6,5 @@ export interface SelectionFilterConfig {
   showOrgUnitFilter?: boolean;
   showLayout?: boolean;
   showDynamicDimension?: boolean;
-  orgUnitFilterConfig?: OrgUnitFilterConfig;
+  orgUnitFilterConfig?: any;
 }
