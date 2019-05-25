@@ -1,5 +1,7 @@
 # DHIS2 selection filters
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/interactive-apps/ngx-dhis2-selection-filters.svg)](https://greenkeeper.io/)
+
 Container for DHIS2 selection filters .i.e. Data, Period, Organisation uni and other based on angular 6+
 
 ## installation
