@@ -46,7 +46,6 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   selectedDataGroups: any[];
   selectedPeriods: any[];
   selectedOrgUnits: any[];
-  filterConfig: SelectionFilterConfig;
 
   constructor() {
     this.showFilters = this.showFilterBody = false;
@@ -67,22 +66,28 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
       this.dataSelections = [];
     }
 
+    // set filter configuration
+    this.selectionFilterConfig = {
+      ...SELECTION_FILTER_CONFIG,
+      ...(this.selectionFilterConfig || {})
+    };
+
     // set selection paremeters
     this._setSelectionParameters();
 
     // set current filter
-    this.selectedFilter = this.filterConfig.showDataFilter
+    this.selectedFilter = this.selectionFilterConfig.showDataFilter
       ? 'DATA'
-      : this.filterConfig.showPeriodFilter
+      : this.selectionFilterConfig.showPeriodFilter
       ? 'PERIOD'
-      : this.filterConfig.showOrgUnitFilter
+      : this.selectionFilterConfig.showOrgUnitFilter
       ? 'ORG_UNIT'
-      : this.filterConfig.showLayout
+      : this.selectionFilterConfig.showLayout
       ? 'LAYOUT'
       : '';
   }
 
-  toggleFilters(e) {
+  onToggleFilter(e) {
     e.stopPropagation();
     this.showFilters = !this.showFilters;
     if (this.showFilters) {
@@ -334,11 +339,5 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
       }),
       'layout'
     );
-
-    // set configuration
-    this.filterConfig = {
-      ...SELECTION_FILTER_CONFIG,
-      ...(this.selectionFilterConfig || {})
-    };
   }
 }

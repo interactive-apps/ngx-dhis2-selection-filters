@@ -4,7 +4,7 @@
     <button
       mat-stroked-button
       class="selection-filter-btn"
-      (click)="toggleFilters($event)"
+      (click)="onToggleFilter($event)"
       [title]="'Filter by different dimensions' | translate"
     >
       <i class="fa fa-filter mr-2"></i>
@@ -18,6 +18,7 @@
       <button
         mat-stroked-button
         class="selection-filter-btn"
+        *ngIf="selectionFilterConfig?.showDataFilter"
         color="{{ selectedFilter === 'DATA' ? 'primary' : '' }}"
         [title]="'Filter by data' | translate"
         (click)="toggleCurrentFilter($event, 'DATA')"
@@ -36,6 +37,7 @@
       <button
         mat-stroked-button
         class="selection-filter-btn"
+        *ngIf="selectionFilterConfig?.showPeriodFilter"
         color="{{ selectedFilter === 'PERIOD' ? 'primary' : '' }}"
         [title]="'Filter by period' | translate"
         (click)="toggleCurrentFilter($event, 'PERIOD')"
@@ -54,6 +56,7 @@
       <button
         mat-stroked-button
         class="selection-filter-btn"
+        *ngIf="selectionFilterConfig?.showOrgUnitFilter"
         color="{{ selectedFilter === 'ORG_UNIT' ? 'primary' : '' }}"
         [title]="'Filter by organisation unit' | translate"
         (click)="toggleCurrentFilter($event, 'ORG_UNIT')"
@@ -97,7 +100,7 @@
     <!--org unit filter-->
     <ngx-dhis2-org-unit-filter
       *ngIf="selectedFilter === 'ORG_UNIT'"
-      [orgUnitFilterConfig]="filterConfig?.orgUnitFilterConfig"
+      [orgUnitFilterConfig]="selectionFilterConfig?.orgUnitFilterConfig"
       [selectedOrgUnitItems]="selectedOrgUnits"
       (orgUnitUpdate)="onFilterUpdate($event, 'ORG_UNIT')"
       (orgUnitClose)="onFilterClose($event, 'ORG_UNIT')"
