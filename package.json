@@ -1,5 +1,5 @@
 {
-  "name": "ngx-dhis2-selecton-filters-module",
+  "name": "ngx-dhis2-data-selection-filters",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

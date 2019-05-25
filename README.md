@@ -4,7 +4,7 @@ Container for DHIS2 selection filters .i.e. Data, Period, Organisation uni and o
 
 ## installation
 
-`npm i @hisptz/ngx-dhis2-selection-filters`
+`npm i @iapps/ngx-dhis2-selection-filters`
 
 ## Usage
 
