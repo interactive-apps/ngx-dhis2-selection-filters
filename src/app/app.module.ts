@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { DragulaModule } from 'ng2-dragula';
 import { NgxDhis2SelectionFiltersModule } from 'projects/ngx-dhis2-selection-filters/src/public_api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -25,6 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     NgxDhis2SelectionFiltersModule,
 
     /**
@@ -42,7 +44,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
-    EffectsModule.forRoot([AppEffects])
+    EffectsModule.forRoot([AppEffects]),
+
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

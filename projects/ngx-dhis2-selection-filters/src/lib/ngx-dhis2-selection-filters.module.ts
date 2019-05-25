@@ -5,6 +5,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgxDhis2OrgUnitFilterModule } from '@iapps/ngx-dhis2-org-unit-filter';
 import { NgxDhis2DataFilterModule } from '@iapps/ngx-dhis2-data-filter';
 import { NgxDhis2PeriodFilterModule } from '@iapps/ngx-dhis2-period-filter';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -12,7 +14,9 @@ import { NgxDhis2PeriodFilterModule } from '@iapps/ngx-dhis2-period-filter';
     TranslateModule.forChild(),
     NgxDhis2OrgUnitFilterModule,
     NgxDhis2DataFilterModule,
-    NgxDhis2PeriodFilterModule
+    NgxDhis2PeriodFilterModule,
+    MatButtonModule,
+    MatCardModule
   ],
   declarations: [NgxDhis2SelectionFiltersComponent],
   exports: [NgxDhis2SelectionFiltersComponent]
