@@ -20,7 +20,9 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/font-awesome/css/font-awesome.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -53,8 +55,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget":
-                "ngx-dhis2-selecton-filters-module:build:production"
+              "browserTarget": "ngx-dhis2-selecton-filters-module:build:production"
             }
           }
         },
@@ -71,7 +72,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": ["src/styles.css"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css"
+            ],
             "scripts": [],
             "assets": ["src/favicon.ico", "src/assets"]
           }
@@ -97,8 +101,7 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget":
-                "ngx-dhis2-selecton-filters-module:serve:production"
+              "devServerTarget": "ngx-dhis2-selecton-filters-module:serve:production"
             }
           }
         },
@@ -120,14 +123,12 @@
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig":
-              "projects/ngx-dhis2-selection-filters/tsconfig.lib.json",
+            "tsConfig": "projects/ngx-dhis2-selection-filters/tsconfig.lib.json",
             "project": "projects/ngx-dhis2-selection-filters/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project":
-                "projects/ngx-dhis2-selection-filters/ng-package.prod.json"
+              "project": "projects/ngx-dhis2-selection-filters/ng-package.prod.json"
             }
           }
         },
@@ -135,8 +136,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/ngx-dhis2-selection-filters/src/test.ts",
-            "tsConfig":
-              "projects/ngx-dhis2-selection-filters/tsconfig.spec.json",
+            "tsConfig": "projects/ngx-dhis2-selection-filters/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-dhis2-selection-filters/karma.conf.js"
           }
         },
@@ -153,5 +153,8 @@
       }
     }
   },
-  "defaultProject": "ngx-dhis2-selecton-filters-module"
+  "defaultProject": "ngx-dhis2-selecton-filters-module",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

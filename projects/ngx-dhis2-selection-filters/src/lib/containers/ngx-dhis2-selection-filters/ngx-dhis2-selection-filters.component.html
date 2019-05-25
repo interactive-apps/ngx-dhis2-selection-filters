@@ -1,69 +1,111 @@
 <div class="selection-filter-container">
   <!--selection filter header-->
   <div class="selection-filter-header">
-    <button class="selection-filter-btn filter-control-btn" (click)="toggleFilters($event)" [title]="'Filter by different dimensions' | translate">
-      <img [src]="filterIcon" alt="">
-      <img [src]="showFilters ? arrowLeftIcon : arrowRightIcon" alt="">
+    <button
+      mat-stroked-button
+      class="selection-filter-btn"
+      (click)="onToggleFilter($event)"
+      [title]="'Filter by different dimensions' | translate"
+    >
+      <i class="fa fa-filter mr-2"></i>
+      <span>Filter</span>
+      <i
+        class="fa {{ showFilters ? 'fa-caret-left' : 'fa-caret-right' }} ml-2"
+      ></i>
     </button>
     <div class="selection-filter-btn-list" *ngIf="showFilters">
       <!--data filter button-->
-      <button [ngClass]="{
-        'selection-filter-btn': true,
-        'active-filter': selectedFilter === 'DATA'
-        }" [title]="'Filter by data' | translate" (click)="toggleCurrentFilter($event, 'DATA')">
-        <img [src]="dataIcon" alt="">&nbsp;{{'Data' | translate}}&nbsp;
-        <img [ngClass]="{'arrow-up': selectedFilter === 'DATA'}" [src]="arrowDownIcon" alt="">
+      <button
+        mat-stroked-button
+        class="selection-filter-btn"
+        *ngIf="selectionFilterConfig?.showDataFilter"
+        color="{{ selectedFilter === 'DATA' ? 'primary' : '' }}"
+        [title]="'Filter by data' | translate"
+        (click)="toggleCurrentFilter($event, 'DATA')"
+      >
+        <i class="fa fa-database mr-2"></i>
+        <span>{{ 'Data' | translate }}</span>
+        <i
+          class="fa {{
+            selectedFilter === 'DATA' ? 'fa-caret-up' : 'fa-caret-down'
+          }} ml-2"
+        ></i>
       </button>
       <!--end of data filter button-->
 
       <!--period filter button-->
-      <button [ngClass]="{
-        'selection-filter-btn': true,
-        'active-filter': selectedFilter === 'PERIOD'
-        }" [title]="'Filter by period' | translate" (click)="toggleCurrentFilter($event, 'PERIOD')">
-        <img [src]="periodIcon" alt="">&nbsp;{{'Period' | translate}}&nbsp;
-        <img [ngClass]="{'arrow-up': selectedFilter === 'PERIOD'}" [src]="arrowDownIcon" alt="">
+      <button
+        mat-stroked-button
+        class="selection-filter-btn"
+        *ngIf="selectionFilterConfig?.showPeriodFilter"
+        color="{{ selectedFilter === 'PERIOD' ? 'primary' : '' }}"
+        [title]="'Filter by period' | translate"
+        (click)="toggleCurrentFilter($event, 'PERIOD')"
+      >
+        <i class="fa fa-clock-o mr-2"></i>
+        <span>{{ 'Period' | translate }}</span>
+        <i
+          class="fa {{
+            selectedFilter === 'PERIOD' ? 'fa-caret-up' : 'fa-caret-down'
+          }} ml-2"
+        ></i>
       </button>
       <!--end of period filter button-->
 
       <!--org unit filter button-->
-      <button [ngClass]="{
-        'selection-filter-btn': true,
-        'active-filter': selectedFilter === 'ORG_UNIT'
-        }" [title]="'Filter by organisation unit' | translate" (click)="toggleCurrentFilter($event, 'ORG_UNIT')">
-        <img [src]="orgUnitIcon" alt="">&nbsp;{{'Org-Unit' | translate}}&nbsp;
-        <img [ngClass]="{'arrow-up': selectedFilter === 'ORG_UNIT'}" [src]="arrowDownIcon" alt="">
+      <button
+        mat-stroked-button
+        class="selection-filter-btn"
+        *ngIf="selectionFilterConfig?.showOrgUnitFilter"
+        color="{{ selectedFilter === 'ORG_UNIT' ? 'primary' : '' }}"
+        [title]="'Filter by organisation unit' | translate"
+        (click)="toggleCurrentFilter($event, 'ORG_UNIT')"
+      >
+        <i class="fa fa-sitemap mr-2"></i>
+        <span>{{ 'Org-Unit' | translate }}</span>
+        <i
+          class="fa {{
+            selectedFilter === 'ORG_UNIT' ? 'fa-caret-up' : 'fa-caret-down'
+          }} ml-2"
+        ></i>
       </button>
       <!--end of org unit filter button-->
-
-      <!--selections update button-->
-      <!--<button-->
-      <!--class="selection-filter-btn"-->
-      <!--[title]="'Update' | translate"-->
-      <!--&gt;-->
-      <!--<img src="assets/icon/tick.png" alt="">-->
-      <!--</button>-->
-      <!--end of selections update button-->
     </div>
   </div>
   <!--end of selection filter header-->
 
   <!--selection filter body-->
-  <div class="selection-filter-body" *ngIf="selectedFilter !== '' && showFilterBody">
+  <mat-card
+    class="selection-filter-body"
+    *ngIf="selectedFilter !== '' && showFilterBody"
+  >
     <!--data filter-->
-    <app-data-filter *ngIf="selectedFilter === 'DATA'" [selectedItems]="selectedData" (dataFilterClose)="onFilterClose($event, 'DATA')"
-      (dataFilterUpdate)="onFilterUpdate($event, 'DATA')"></app-data-filter>
-    <!--end of data filter
+    <ngx-dhis2-data-filter
+      *ngIf="selectedFilter === 'DATA'"
+      [selectedItems]="selectedData"
+      (close)="onFilterClose($event, 'DATA')"
+      (update)="onFilterUpdate($event, 'DATA')"
+    ></ngx-dhis2-data-filter>
+    <!--end of data filter-->
 
     <!--period filter-->
-    <app-period-filter *ngIf="selectedFilter === 'PERIOD'" [selectedPeriods]="selectedPeriods" (periodFilterClose)="onFilterClose($event, 'PERIOD')"
-      (periodFilterUpdate)="onFilterUpdate($event, 'PERIOD')"></app-period-filter>
+    <ngx-dhis2-period-filter
+      *ngIf="selectedFilter === 'PERIOD'"
+      [selectedPeriods]="selectedPeriods"
+      (close)="onFilterClose($event, 'PERIOD')"
+      (update)="onFilterUpdate($event, 'PERIOD')"
+    ></ngx-dhis2-period-filter>
     <!--end of period filter-->
 
     <!--org unit filter-->
-    <!-- <app-org-unit-filter *ngIf="selectedFilter === 'ORG_UNIT'" [selectedOrgUnits]="selectedOrgUnits" (orgUnitClose)="onFilterClose($event, 'ORG_UNIT')"
-      (orgUnitUpdate)="onFilterUpdate($event, 'ORG_UNIT')"></app-org-unit-filter> -->
+    <ngx-dhis2-org-unit-filter
+      *ngIf="selectedFilter === 'ORG_UNIT'"
+      [orgUnitFilterConfig]="selectionFilterConfig?.orgUnitFilterConfig"
+      [selectedOrgUnitItems]="selectedOrgUnits"
+      (orgUnitUpdate)="onFilterUpdate($event, 'ORG_UNIT')"
+      (orgUnitClose)="onFilterClose($event, 'ORG_UNIT')"
+    ></ngx-dhis2-org-unit-filter>
     <!--end of org unit filter-->
-  </div>
+  </mat-card>
   <!--end of selection filter body-->
 </div>
