@@ -1,5 +1,9 @@
 # DHIS2 selection filters
 
+[![dependencies Status](https://david-dm.org/interactive-apps/ngx-dhis2-selection-filters/status.svg)](https://david-dm.org/interactive-apps/ngx-dhis2-selection-filters)
+[![devDependencies Status](https://david-dm.org/interactive-apps/ngx-dhis2-selection-filters/dev-status.svg)](https://david-dm.org/interactive-apps/ngx-dhis2-selection-filters?type=dev)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 Container for DHIS2 selection filters .i.e. Data, Period, Organisation uni and other based on angular 6+
 
 ## installation
