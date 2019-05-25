@@ -5,6 +5,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/ff599d4632d33d60f58e/maintainability)](https://codeclimate.com/github/interactive-apps/ngx-dhis2-selection-filters/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ff599d4632d33d60f58e/test_coverage)](https://codeclimate.com/github/interactive-apps/ngx-dhis2-selection-filters/test_coverage)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/interactive-apps/ngx-dhis2-selection-filters.svg)](https://greenkeeper.io/)
 
 Container for DHIS2 selection filters .i.e. Data, Period, Organisation uni and other based on angular 6+
 
