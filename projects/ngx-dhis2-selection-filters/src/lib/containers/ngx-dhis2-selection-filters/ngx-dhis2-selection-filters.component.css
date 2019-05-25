@@ -60,11 +60,10 @@
 .selection-filter-body {
   position: absolute;
   top: 45px;
-
   padding: 5px;
   width: 600px;
   min-height: 350px;
-  z-index: 2000;
+  z-index: 1000;
 }
 
 .arrow-up {
