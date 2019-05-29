@@ -31,7 +31,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 
     /**
      * Translation module
-     */ TranslateModule.forRoot({
+     */
+
+    TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
