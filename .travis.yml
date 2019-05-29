@@ -9,6 +9,7 @@ branches:
   only:
     - master
     - develop
+    - feature/vrg-feature
     - /^greenkeeper/.*$/
 
 addons:
