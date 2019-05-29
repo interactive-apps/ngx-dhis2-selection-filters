@@ -33,6 +33,26 @@
       </button>
       <!--end of data filter button-->
 
+
+      <!--Validation Rule Group filter button-->
+      <button
+        mat-stroked-button
+        class="selection-filter-btn"
+        *ngIf="selectionFilterConfig?.showValidationRuleGroupFilter"
+        color="{{ selectedFilter === 'VALIDATIONRULEGROUP' ? 'primary' : '' }}"
+        [title]="'Filter by Validation Rule Group' | translate"
+        (click)="toggleCurrentFilter($event, 'VALIDATIONRULEGROUP')"
+      >
+        <i class="fa fa-object-group mr-2"></i>
+        <span>{{ 'VR-Group' | translate }}</span>
+        <i
+          class="fa {{
+            selectedFilter === 'VALIDATIONRULEGROUP' ? 'fa-caret-up' : 'fa-caret-down'
+          }} ml-2"
+        ></i>
+      </button>
+      <!--end of Validation Rule Group filter button-->
+
       <!--period filter button-->
       <button
         mat-stroked-button

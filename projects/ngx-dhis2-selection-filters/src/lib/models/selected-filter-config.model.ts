@@ -4,6 +4,7 @@ export interface SelectionFilterConfig {
   showDataFilter?: boolean;
   showPeriodFilter?: boolean;
   showOrgUnitFilter?: boolean;
+  showValidationRuleGroupFilter?: Boolean;
   showLayout?: boolean;
   showDynamicDimension?: boolean;
   orgUnitFilterConfig?: any;
