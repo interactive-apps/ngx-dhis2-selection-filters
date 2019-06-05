@@ -1,10 +1,10 @@
 {
   "name": "ngx-dhis2-data-selection-filters",
-  "version": "0.0.0",
+  "version": "1.0.4-alpha.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy-config.json",
-    "build": "ng build --prod --aot",
+    "start": "ng serve --port 4204 --proxy-config proxy-config.json",
+    "build": "ng build --prod --aot ",
     "build-lib": "ng build --prod ngx-dhis2-selection-filters",
     "build-lib-dev": "npm run build-lib && cd dist/ngx-dhis2-selection-filters && npm pack && cd ../../ && npm install dist/ngx-dhis2-selection-filters/*.tgz",
     "publish": "npm run build-lib && cd dist/ngx-dhis2-selection-filters && npm publish --access public && cd ../../",
@@ -26,10 +26,12 @@
     "@angular/platform-browser": "^7.2.15",
     "@angular/platform-browser-dynamic": "^7.2.15",
     "@angular/router": "^7.2.15",
+    "@hisptz/ngx-dhis2-http-client": "^2.0.2",
     "@iapps/ngx-dhis2-data-filter": "^1.0.0-beta.3",
     "@iapps/ngx-dhis2-http-client": "^2.0.2",
     "@iapps/ngx-dhis2-org-unit-filter": "^1.0.17",
     "@iapps/ngx-dhis2-period-filter": "^1.0.0-beta.6",
+    "@iapps/ngx-dhis2-validation-rule-group-filter": "^1.0.0-alpha.12",
     "@ngrx/effects": "^7.4.0",
     "@ngrx/entity": "^7.4.0",
     "@ngrx/store": "^7.4.0",
@@ -49,7 +51,7 @@
     "zone.js": "^0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.13.0",
+    "@angular-devkit/build-angular": "^0.13.9",
     "@angular-devkit/build-ng-packagr": "~0.13.0",
     "@angular/cli": "~7.3.9",
     "@angular/compiler-cli": "^7.2.15",
