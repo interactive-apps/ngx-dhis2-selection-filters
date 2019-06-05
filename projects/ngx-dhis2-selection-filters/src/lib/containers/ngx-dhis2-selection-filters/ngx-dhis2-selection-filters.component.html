@@ -108,6 +108,15 @@
     ></ngx-dhis2-data-filter>
     <!--end of data filter-->
 
+    <!--Validation Rule Group filter-->
+    <lib-ngx-dhis2-validation-rule-filter
+      *ngIf="selectedFilter === 'VALIDATIONRULEGROUP'"
+      [dataSelection]='dataSelections' 
+      (update)="onUpdateValidationRuleGroup($event, 'VALIDATIONRULEGROUP')"
+      (close)="onUpdateValidationRuleGroup($event, 'VALIDATIONRULEGROUP')">
+    </lib-ngx-dhis2-validation-rule-filter>
+    <!--end of Validation Rule Group filter-->
+
     <!--period filter-->
     <ngx-dhis2-period-filter
       *ngIf="selectedFilter === 'PERIOD'"

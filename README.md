@@ -1,5 +1,6 @@
 # DHIS2 selection filters
 
+[![Build Status](https://travis-ci.org/interactive-apps/ngx-dhis2-selection-filters.svg?branch=master)](https://travis-ci.org/interactive-apps/ngx-dhis2-selection-filters)
 [![dependencies Status](https://david-dm.org/interactive-apps/ngx-dhis2-selection-filters/status.svg)](https://david-dm.org/interactive-apps/ngx-dhis2-selection-filters)
 [![devDependencies Status](https://david-dm.org/interactive-apps/ngx-dhis2-selection-filters/dev-status.svg)](https://david-dm.org/interactive-apps/ngx-dhis2-selection-filters?type=dev)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ff599d4632d33d60f58e/maintainability)](https://codeclimate.com/github/interactive-apps/ngx-dhis2-selection-filters/maintainability)
