@@ -1,6 +1,6 @@
 {
   "name": "ngx-dhis2-data-selection-filters",
-  "version": "1.0.4-alpha.1",
+  "version": "1.0.4-alpha.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4204 --proxy-config proxy-config.json",
