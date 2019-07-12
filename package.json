@@ -22,7 +22,7 @@
     "@angular/core": "^7.2.15",
     "@angular/forms": "^7.2.15",
     "@angular/http": "^7.2.15",
-    "@angular/material": "^8.0.0",
+    "@angular/material": "^8.0.2",
     "@angular/platform-browser": "^7.2.15",
     "@angular/platform-browser-dynamic": "^7.2.15",
     "@angular/router": "^7.2.15",
