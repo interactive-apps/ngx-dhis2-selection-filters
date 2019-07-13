@@ -2,13 +2,13 @@
   "/api": {
       "target": "http://dhis.moh.go.tz/",
       "secure": "false",
-      "auth": "waltervfaustine:Cainam@2019",
+      "auth": "demo:demo@2019",
       "changeOrigin": "true"
   },
   "/": {
       "target": "http://dhis.moh.go.tz/",
       "secure": "false",
-      "auth": "waltervfaustine:Cainam@2019",
+      "auth": "demo:demo@2019",
       "changeOrigin": "true"
   }
 }
