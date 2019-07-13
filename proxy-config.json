@@ -1,15 +1,14 @@
 {
-    "/api": {
-      "target": "https://play.dhis2.org/2.29",
+  "/api": {
+      "target": "http://dhis.moh.go.tz/",
       "secure": "false",
-      "auth":"system:System123",
+      "auth": "waltervfaustine:Cainam@2019",
       "changeOrigin": "true"
-
-    },
-    "/": {
-      "target": "https://play.dhis2.org/2.29",
+  },
+  "/": {
+      "target": "http://dhis.moh.go.tz/",
       "secure": "false",
-      "auth":"system:System123",
+      "auth": "waltervfaustine:Cainam@2019",
       "changeOrigin": "true"
-    }
   }
+}
