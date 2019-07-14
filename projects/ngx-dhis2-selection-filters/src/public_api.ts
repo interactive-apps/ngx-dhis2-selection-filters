@@ -3,3 +3,4 @@
  */
 
 export * from './lib/ngx-dhis2-selection-filters.module';
+export * from './lib/models/selected-filter-config.model';
