@@ -108,6 +108,10 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
     }
   }
 
+  // onUpdateValidationRuleGroup = (e, action: string) => {
+  //   console.log('Actions::: ' + action + ' Clicked');
+  // }
+
   onFilterClose(selectedItems, selectedFilter) {
     if (selectedFilter === 'LAYOUT') {
       const layouts = _.flatten(

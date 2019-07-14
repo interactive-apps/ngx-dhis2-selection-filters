@@ -9,6 +9,6 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to ngx-dhis2-selecton-filters-module!');
+    expect(page.getParagraphText()).toEqual('Welcome to ngx-dhis2-data-selection-filters!');
   });
 });

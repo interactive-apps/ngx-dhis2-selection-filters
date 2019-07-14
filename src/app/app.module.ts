@@ -15,6 +15,8 @@ import { AppEffects } from './app.effects';
 import { DragulaModule } from 'ng2-dragula';
 import { NgxDhis2SelectionFiltersModule } from 'projects/ngx-dhis2-selection-filters/src/public_api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxDhis2ValidationRuleFilterModule } from '@iapps/ngx-dhis2-validation-rule-group-filter';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,10 +30,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     BrowserAnimationsModule,
     NgxDhis2SelectionFiltersModule,
+    NgxDhis2ValidationRuleFilterModule,
 
     /**
      * Translation module
-     */ TranslateModule.forRoot({
+     */
+
+    TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
