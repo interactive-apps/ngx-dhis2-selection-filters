@@ -1,6 +1,6 @@
 {
   "name": "ngx-dhis2-data-selection-filters",
-  "version": "1.0.4-alpha.3",
+  "version": "1.0.6-alpha.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4204 --proxy-config proxy-config.json",
@@ -29,7 +29,7 @@
     "@hisptz/ngx-dhis2-http-client": "^2.0.2",
     "@iapps/ngx-dhis2-data-filter": "^1.0.0-beta.3",
     "@iapps/ngx-dhis2-http-client": "^2.0.2",
-    "@iapps/ngx-dhis2-org-unit-filter": "^1.0.17",
+    "@iapps/ngx-dhis2-org-unit-filter": "^1.0.18",
     "@iapps/ngx-dhis2-period-filter": "^1.0.0-beta.6",
     "@iapps/ngx-dhis2-validation-rule-group-filter": "^1.0.0-alpha.13",
     "@ngrx/effects": "^7.4.0",
