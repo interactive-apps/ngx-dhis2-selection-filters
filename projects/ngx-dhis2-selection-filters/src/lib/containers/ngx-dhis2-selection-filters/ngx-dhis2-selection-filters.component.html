@@ -33,7 +33,6 @@
       </button>
       <!--end of data filter button-->
 
-
       <!--Validation Rule Group filter button-->
       <button
         mat-stroked-button
@@ -47,7 +46,9 @@
         <span>{{ 'VR-Group' | translate }}</span>
         <i
           class="fa {{
-            selectedFilter === 'VALIDATIONRULEGROUP' ? 'fa-caret-up' : 'fa-caret-down'
+            selectedFilter === 'VALIDATIONRULEGROUP'
+              ? 'fa-caret-up'
+              : 'fa-caret-down'
           }} ml-2"
         ></i>
       </button>

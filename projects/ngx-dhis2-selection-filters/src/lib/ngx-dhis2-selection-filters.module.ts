@@ -1,12 +1,31 @@
-import { NgModule } from '@angular/core';
+/**
+ * Copyright (C) 2019 Rajab Mkomwa
+ *
+ * ngx-dhis2-selecton-filters-module is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ngx-dhis2-selecton-filters-module is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with ngx-dhis2-selecton-filters-module. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import { CommonModule } from '@angular/common';
-import { NgxDhis2SelectionFiltersComponent } from './containers/ngx-dhis2-selection-filters/ngx-dhis2-selection-filters.component';
-import { TranslateModule } from '@ngx-translate/core';
-import { NgxDhis2OrgUnitFilterModule } from '@iapps/ngx-dhis2-org-unit-filter';
-import { NgxDhis2DataFilterModule } from '@iapps/ngx-dhis2-data-filter';
-import { NgxDhis2PeriodFilterModule } from '@iapps/ngx-dhis2-period-filter';
+import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { NgxDhis2DataFilterModule } from '@iapps/ngx-dhis2-data-filter';
+import { NgxDhis2OrgUnitFilterModule } from '@iapps/ngx-dhis2-org-unit-filter';
+import { NgxDhis2PeriodFilterModule } from '@iapps/ngx-dhis2-period-filter';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgxDhis2HttpClientModule } from '@iapps/ngx-dhis2-http-client';
+
+import { NgxDhis2SelectionFiltersComponent } from './containers/ngx-dhis2-selection-filters/ngx-dhis2-selection-filters.component';
 
 @NgModule({
   imports: [
