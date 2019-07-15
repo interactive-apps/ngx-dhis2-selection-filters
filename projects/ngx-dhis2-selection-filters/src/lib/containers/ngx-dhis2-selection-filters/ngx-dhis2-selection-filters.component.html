@@ -43,7 +43,7 @@
         (click)="toggleCurrentFilter($event, 'VALIDATIONRULEGROUP')"
       >
         <i class="fa fa-object-group mr-2"></i>
-        <span>{{ 'VR-Group' | translate }}</span>
+        <span>{{ 'Validation' | translate }}</span>
         <i
           class="fa {{
             selectedFilter === 'VALIDATIONRULEGROUP'
@@ -127,6 +127,14 @@
       (orgUnitClose)="onFilterClose($event, 'ORG_UNIT')"
     ></ngx-dhis2-org-unit-filter>
     <!--end of org unit filter-->
+
+    <!-- validation rule group -->
+    <lib-ngx-dhis2-validation-rule-filter
+      *ngIf="selectedFilter === 'VALIDATIONRULEGROUP'"
+      (update)="onFilterUpdate($event, 'VALIDATIONRULEGROUP')"
+      (close)="onFilterClose($event, 'VALIDATIONRULEGROUP')"
+    ></lib-ngx-dhis2-validation-rule-filter>
+    <!-- end of validation rule group -->
   </mat-card>
   <!--end of selection filter body-->
 </div>

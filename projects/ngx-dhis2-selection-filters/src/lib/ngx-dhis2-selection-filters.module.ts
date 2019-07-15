@@ -23,7 +23,7 @@ import { NgxDhis2DataFilterModule } from '@iapps/ngx-dhis2-data-filter';
 import { NgxDhis2OrgUnitFilterModule } from '@iapps/ngx-dhis2-org-unit-filter';
 import { NgxDhis2PeriodFilterModule } from '@iapps/ngx-dhis2-period-filter';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgxDhis2HttpClientModule } from '@iapps/ngx-dhis2-http-client';
+import { NgxDhis2ValidationRuleFilterModule } from '@iapps/ngx-dhis2-validation-rule-group-filter';
 
 import { NgxDhis2SelectionFiltersComponent } from './containers/ngx-dhis2-selection-filters/ngx-dhis2-selection-filters.component';
 
@@ -34,6 +34,7 @@ import { NgxDhis2SelectionFiltersComponent } from './containers/ngx-dhis2-select
     NgxDhis2OrgUnitFilterModule,
     NgxDhis2DataFilterModule,
     NgxDhis2PeriodFilterModule,
+    NgxDhis2ValidationRuleFilterModule,
     MatButtonModule,
     MatCardModule
   ],
