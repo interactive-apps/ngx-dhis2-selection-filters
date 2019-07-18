@@ -1,17 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as _ from 'lodash';
-import {
-  FILTER_ICON,
-  ARROW_LEFT_ICON,
-  ARROW_RIGHT_ICON,
-  DATA_ICON,
-  PERIOD_ICON,
-  ARROW_DOWN_ICON,
-  TREE_ICON
-} from '../../icons';
-import { SelectionFilterConfig } from '../../models/selected-filter-config.model';
-import { SELECTION_FILTER_CONFIG } from '../../constants/selection-filter-config.constant';
+
 import { getDataElementsFromIndicators } from '../../helpers/get-data-elements-from-indicators.helper';
+import { updateSelectionFilterConfig } from '../../helpers/update-selection-filter-config.helper';
+import { SelectionFilterConfig } from '../../models/selected-filter-config.model';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -31,14 +23,6 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   showFilters: boolean;
   showFilterBody: boolean;
 
-  // icons
-  filterIcon: string;
-  arrowLeftIcon: string;
-  arrowRightIcon: string;
-  arrowDownIcon: string;
-  dataIcon: string;
-  periodIcon: string;
-  orgUnitIcon: string;
   selectedFilter: string;
 
   // selections
@@ -51,15 +35,6 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
 
   constructor() {
     this.showFilters = this.showFilterBody = false;
-
-    // icons initializations
-    this.filterIcon = FILTER_ICON;
-    this.arrowLeftIcon = ARROW_LEFT_ICON;
-    this.arrowRightIcon = ARROW_RIGHT_ICON;
-    this.arrowDownIcon = ARROW_DOWN_ICON;
-    this.dataIcon = DATA_ICON;
-    this.periodIcon = PERIOD_ICON;
-    this.orgUnitIcon = TREE_ICON;
   }
 
   ngOnInit() {
@@ -67,12 +42,6 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
     if (!this.dataSelections || !_.isArray(this.dataSelections)) {
       this.dataSelections = [];
     }
-
-    // set filter configuration
-    this.selectionFilterConfig = {
-      ...SELECTION_FILTER_CONFIG,
-      ...(this.selectionFilterConfig || {})
-    };
 
     // set selection paremeters
     this._setSelectionParameters();
@@ -308,6 +277,11 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   }
 
   private _setSelectionParameters() {
+    // set selection filter configuration
+    this.selectionFilterConfig = updateSelectionFilterConfig(
+      this.selectionFilterConfig,
+      this.dataSelections
+    );
     // set data items
     const dataObject = _.find(this.dataSelections, ['dimension', 'dx']);
     this.selectedData = dataObject ? dataObject.items : [];

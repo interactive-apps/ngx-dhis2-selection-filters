@@ -20,6 +20,7 @@
         class="selection-filter-btn"
         *ngIf="selectionFilterConfig?.showDataFilter"
         color="{{ selectedFilter === 'DATA' ? 'primary' : '' }}"
+        [disabled]="selectionFilterConfig?.disableDataFilter"
         [title]="'Filter by data' | translate"
         (click)="toggleCurrentFilter($event, 'DATA')"
       >
@@ -39,6 +40,7 @@
         class="selection-filter-btn"
         *ngIf="selectionFilterConfig?.showValidationRuleGroupFilter"
         color="{{ selectedFilter === 'VALIDATIONRULEGROUP' ? 'primary' : '' }}"
+        [disabled]="selectionFilterConfig?.disableValidationRuleGroupFilter"
         [title]="'Filter by Validation Rule Group' | translate"
         (click)="toggleCurrentFilter($event, 'VALIDATIONRULEGROUP')"
       >
@@ -60,6 +62,7 @@
         class="selection-filter-btn"
         *ngIf="selectionFilterConfig?.showPeriodFilter"
         color="{{ selectedFilter === 'PERIOD' ? 'primary' : '' }}"
+        [disabled]="selectionFilterConfig?.disablePeriodFilter"
         [title]="'Filter by period' | translate"
         (click)="toggleCurrentFilter($event, 'PERIOD')"
       >
@@ -79,6 +82,7 @@
         class="selection-filter-btn"
         *ngIf="selectionFilterConfig?.showOrgUnitFilter"
         color="{{ selectedFilter === 'ORG_UNIT' ? 'primary' : '' }}"
+        [disabled]="selectionFilterConfig?.disableOrgUnitFilter"
         [title]="'Filter by organisation unit' | translate"
         (click)="toggleCurrentFilter($event, 'ORG_UNIT')"
       >
