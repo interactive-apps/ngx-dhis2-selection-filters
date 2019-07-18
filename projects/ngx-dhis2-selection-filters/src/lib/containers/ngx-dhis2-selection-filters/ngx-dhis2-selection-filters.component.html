@@ -20,6 +20,7 @@
         class="selection-filter-btn"
         *ngIf="selectionFilterConfig?.showDataFilter"
         color="{{ selectedFilter === 'DATA' ? 'primary' : '' }}"
+        [disabled]="selectionFilterConfig?.disableDataFilter"
         [title]="'Filter by data' | translate"
         (click)="toggleCurrentFilter($event, 'DATA')"
       >
@@ -33,12 +34,35 @@
       </button>
       <!--end of data filter button-->
 
+      <!--Validation Rule Group filter button-->
+      <button
+        mat-stroked-button
+        class="selection-filter-btn"
+        *ngIf="selectionFilterConfig?.showValidationRuleGroupFilter"
+        color="{{ selectedFilter === 'VALIDATIONRULEGROUP' ? 'primary' : '' }}"
+        [disabled]="selectionFilterConfig?.disableValidationRuleGroupFilter"
+        [title]="'Filter by Validation Rule Group' | translate"
+        (click)="toggleCurrentFilter($event, 'VALIDATIONRULEGROUP')"
+      >
+        <i class="fa fa-object-group mr-2"></i>
+        <span>{{ 'Validation' | translate }}</span>
+        <i
+          class="fa {{
+            selectedFilter === 'VALIDATIONRULEGROUP'
+              ? 'fa-caret-up'
+              : 'fa-caret-down'
+          }} ml-2"
+        ></i>
+      </button>
+      <!--end of Validation Rule Group filter button-->
+
       <!--period filter button-->
       <button
         mat-stroked-button
         class="selection-filter-btn"
         *ngIf="selectionFilterConfig?.showPeriodFilter"
         color="{{ selectedFilter === 'PERIOD' ? 'primary' : '' }}"
+        [disabled]="selectionFilterConfig?.disablePeriodFilter"
         [title]="'Filter by period' | translate"
         (click)="toggleCurrentFilter($event, 'PERIOD')"
       >
@@ -58,6 +82,7 @@
         class="selection-filter-btn"
         *ngIf="selectionFilterConfig?.showOrgUnitFilter"
         color="{{ selectedFilter === 'ORG_UNIT' ? 'primary' : '' }}"
+        [disabled]="selectionFilterConfig?.disableOrgUnitFilter"
         [title]="'Filter by organisation unit' | translate"
         (click)="toggleCurrentFilter($event, 'ORG_UNIT')"
       >
@@ -106,6 +131,15 @@
       (orgUnitClose)="onFilterClose($event, 'ORG_UNIT')"
     ></ngx-dhis2-org-unit-filter>
     <!--end of org unit filter-->
+
+    <!-- validation rule group -->
+    <lib-ngx-dhis2-validation-rule-filter
+      *ngIf="selectedFilter === 'VALIDATIONRULEGROUP'"
+      [dataSelection]="selectedValidationDataElements"
+      (update)="onFilterUpdate($event, 'VALIDATIONRULEGROUP')"
+      (close)="onFilterClose($event, 'VALIDATIONRULEGROUP')"
+    ></lib-ngx-dhis2-validation-rule-filter>
+    <!-- end of validation rule group -->
   </mat-card>
   <!--end of selection filter body-->
 </div>

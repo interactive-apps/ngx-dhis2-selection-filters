@@ -1,20 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
-
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './app.effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { DragulaModule } from 'ng2-dragula';
 import { NgxDhis2SelectionFiltersModule } from 'projects/ngx-dhis2-selection-filters/src/public_api';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxDhis2HttpClientModule } from '@iapps/ngx-dhis2-http-client';
+
+import { environment } from '../environments/environment';
+import { AppComponent } from './app.component';
+import { AppEffects } from './app.effects';
+import { metaReducers, reducers } from './reducers';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -27,8 +27,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxDhis2HttpClientModule.forRoot({
+      namespace: 'hisptz',
+      version: 1,
+      models: {}
+    }),
     NgxDhis2SelectionFiltersModule,
-
     /**
      * Translation module
      */
@@ -42,11 +46,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     DragulaModule.forRoot(),
 
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot({}),
 
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
-    EffectsModule.forRoot([AppEffects]),
+    EffectsModule.forRoot([]),
 
     BrowserAnimationsModule
   ],
