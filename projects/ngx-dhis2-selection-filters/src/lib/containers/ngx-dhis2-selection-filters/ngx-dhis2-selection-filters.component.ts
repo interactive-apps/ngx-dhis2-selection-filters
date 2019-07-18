@@ -18,11 +18,12 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   layout: any;
   @Input()
   selectionFilterConfig: SelectionFilterConfig;
+
   @Output()
   update: EventEmitter<any[]> = new EventEmitter<any[]>();
+
   showFilters: boolean;
   showFilterBody: boolean;
-
   selectedFilter: string;
 
   // selections

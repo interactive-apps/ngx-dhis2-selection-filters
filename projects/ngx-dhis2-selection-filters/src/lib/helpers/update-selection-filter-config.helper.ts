@@ -11,7 +11,7 @@ export function updateSelectionFilterConfig(
     ...SELECTION_FILTER_CONFIG,
     ...(selectionFilterConfig || {})
   };
-  if (selectionFilterConfig.allowStepSelection) {
+  if (newSelectionFilterConfig.allowStepSelection) {
     const stepSelections = selectionFilterConfig.stepSelections || [];
     each(
       stepSelections,
