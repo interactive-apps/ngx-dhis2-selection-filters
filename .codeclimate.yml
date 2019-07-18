@@ -12,3 +12,15 @@ exclude_patterns:
   - '**/karma.conf.js'
   - 'demo/polyfills.ts'
   - 'demo/test.ts'
+plugins:
+  csslint:
+    enabled: true
+  editorconfig:
+    enabled: true
+    config:
+      editorconfig: .editorconfig
+  git-legal:
+    enabled: true
+  tslint:
+    enabled: true
+    config: tslint.json
