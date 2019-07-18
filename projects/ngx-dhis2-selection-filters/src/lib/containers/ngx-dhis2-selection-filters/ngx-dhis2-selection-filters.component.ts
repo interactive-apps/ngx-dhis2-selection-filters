@@ -11,6 +11,7 @@ import {
 } from '../../icons';
 import { SelectionFilterConfig } from '../../models/selected-filter-config.model';
 import { SELECTION_FILTER_CONFIG } from '../../constants/selection-filter-config.constant';
+import { getDataElementsFromIndicators } from '../../helpers/get-data-elements-from-indicators.helper';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -44,6 +45,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   selectedData: any[];
   selectedDynamicDimensions: any[];
   selectedDataGroups: any[];
+  selectedValidationDataElements: any[];
   selectedPeriods: any[];
   selectedOrgUnits: any[];
 
@@ -327,6 +329,11 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
     // set org units
     const orgUnitObject = _.find(this.dataSelections, ['dimension', 'ou']);
     this.selectedOrgUnits = orgUnitObject ? orgUnitObject.items : [];
+
+    // set validation data elements
+    this.selectedValidationDataElements = getDataElementsFromIndicators(
+      dataObject ? dataObject.items : []
+    );
 
     // set layout
     const layoutItem = _.groupBy(
