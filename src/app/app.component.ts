@@ -14,6 +14,9 @@ export class AppComponent {
     dataFilterConfig: {
       singleSelection: true,
       enabledSelections: ['in']
+    },
+    periodFilterConfig: {
+      singleSelection: true
     }
   };
 

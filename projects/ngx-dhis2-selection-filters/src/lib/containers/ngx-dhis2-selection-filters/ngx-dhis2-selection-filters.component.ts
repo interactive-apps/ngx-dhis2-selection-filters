@@ -31,6 +31,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   selectedDynamicDimensions: any[];
   selectedDataGroups: any[];
   selectedValidationDataElements: any[];
+  lowestPeriodType: string;
   selectedPeriods: any[];
   selectedOrgUnits: any[];
 
@@ -309,6 +310,16 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
     this.selectedValidationDataElements = getDataElementsFromIndicators(
       dataObject ? dataObject.items : []
     );
+
+    // set lowest period type
+    const validationRuleGroup = _.find(this.dataSelections, [
+      'dimension',
+      'vrg'
+    ]);
+    this.lowestPeriodType =
+      validationRuleGroup && validationRuleGroup.periodType
+        ? validationRuleGroup.periodType.id
+        : '';
 
     // set layout
     const layoutItem = _.groupBy(
