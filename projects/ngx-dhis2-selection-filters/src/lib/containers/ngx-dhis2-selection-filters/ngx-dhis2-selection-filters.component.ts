@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import { getDataElementsFromIndicators } from '../../helpers/get-data-elements-from-indicators.helper';
 import { updateSelectionFilterConfig } from '../../helpers/update-selection-filter-config.helper';
 import { SelectionFilterConfig } from '../../models/selected-filter-config.model';
+import { getLayout } from '../../helpers/get-layout.helper';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -133,7 +134,11 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
             ])
               ? [
                   ...(this.dataSelections || []),
-                  { ...selectedItem, layout: 'filters' }
+                  {
+                    ...selectedItem,
+                    layout:
+                      selectedItem.layout || getLayout(selectedItem.dimension)
+                  }
                 ]
               : [
                   ...this.updateDataSelectionWithNewSelections(
@@ -149,7 +154,11 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
           ])
             ? [
                 ...(this.dataSelections || []),
-                { ...selectedItems, layout: 'columns' }
+                {
+                  ...selectedItems,
+                  layout:
+                    selectedItems.layout || getLayout(selectedItems.dimension)
+                }
               ]
             : [
                 ...this.updateDataSelectionWithNewSelections(
@@ -221,7 +230,11 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
           ])
             ? [
                 ...(this.dataSelections || []),
-                { ...selectedItem, layout: 'filters' }
+                {
+                  ...selectedItem,
+                  layout:
+                    selectedItem.layout || getLayout(selectedItem.dimension)
+                }
               ]
             : [
                 ...this.updateDataSelectionWithNewSelections(
@@ -237,7 +250,11 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
         ])
           ? [
               ...(this.dataSelections || []),
-              { ...selectedItems, layout: 'columns' }
+              {
+                ...selectedItems,
+                layout:
+                  selectedItems.layout || getLayout(selectedItems.dimension)
+              }
             ]
           : [
               ...this.updateDataSelectionWithNewSelections(

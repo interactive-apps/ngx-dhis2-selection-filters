@@ -1,6 +1,6 @@
 import { OrgUnitFilterConfig } from '@iapps/ngx-dhis2-org-unit-filter';
-import { DataFilterConfig } from '@iapps/ngx-dhis2-data-filter';
 import { PeriodFilterConfig } from '@iapps/ngx-dhis2-period-filter';
+import { DataFilterConfig } from '@iapps/ngx-dhis2-data-filter';
 
 export interface SelectionFilterConfig {
   showDataFilter?: boolean;
