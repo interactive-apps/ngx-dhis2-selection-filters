@@ -49,7 +49,7 @@ function getDisableFilterType(dimension: string): string {
       return 'disablePeriodFilter';
     }
 
-    case 'unknown': {
+    case 'vrg': {
       return 'disableValidationRuleGroupFilter';
     }
 

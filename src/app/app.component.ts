@@ -10,7 +10,14 @@ export class AppComponent {
   title = 'app';
   selectionFilterConfig: SelectionFilterConfig = {
     allowStepSelection: true,
-    stepSelections: ['dx', 'ou', 'unknown', 'pe']
+    stepSelections: ['dx', 'vrg', 'pe', 'ou'],
+    dataFilterConfig: {
+      singleSelection: true,
+      enabledSelections: ['in']
+    },
+    periodFilterConfig: {
+      singleSelection: true
+    }
   };
 
   onUpdate(dataSelections) {

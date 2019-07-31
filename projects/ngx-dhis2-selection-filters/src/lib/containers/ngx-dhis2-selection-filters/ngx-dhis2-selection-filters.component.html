@@ -108,6 +108,7 @@
     <ngx-dhis2-data-filter
       *ngIf="selectedFilter === 'DATA'"
       [selectedItems]="selectedData"
+      [dataFilterConfig]="selectionFilterConfig?.dataFilterConfig"
       (close)="onFilterClose($event, 'DATA')"
       (update)="onFilterUpdate($event, 'DATA')"
     ></ngx-dhis2-data-filter>
@@ -117,6 +118,8 @@
     <ngx-dhis2-period-filter
       *ngIf="selectedFilter === 'PERIOD'"
       [selectedPeriods]="selectedPeriods"
+      [periodFilterConfig]="selectionFilterConfig.periodFilterConfig"
+      [lowestPeriodType]="lowestPeriodType"
       (close)="onFilterClose($event, 'PERIOD')"
       (update)="onFilterUpdate($event, 'PERIOD')"
     ></ngx-dhis2-period-filter>
