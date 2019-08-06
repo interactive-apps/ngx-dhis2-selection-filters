@@ -31,14 +31,11 @@ then add this in the imports
 
 Once imported, dhis2 selection filters can be called in as
 
-```
-<ngx-dhis2-selection-filters
-  (filterUpdate)="onFilterUpdateAction($event)"
-  [dataSelections]="dataSelections"
-  [selectionFilterConfig]="selectionFilterConfig"
->
-</ngx-dhis2-selection-filters>
-```
+    <ngx-dhis2-selection-filters
+      (filterUpdate)="onFilterUpdateAction($event)"
+      [dataSelections]="dataSelections"
+      [selectionFilterConfig]="selectionFilterConfig">
+    </ngx-dhis2-selection-filters>
 
 Inputs
 
