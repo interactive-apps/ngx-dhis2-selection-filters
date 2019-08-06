@@ -1,61 +1,26 @@
-# version: '2'
-# exclude_patterns:
-#   - 'docs'
-#   - 'documentation'
-#   - 'dist'
-#   - '**/*.log'
-#   - '**/*.ico'
-#   - 'e2e/'
-#   - 'demo/assets/'
-#   - 'demo/typings.d.ts'
-#   - '**/*.spec.ts'
-#   - '**/karma.conf.js'
-#   - 'demo/polyfills.ts'
-#   - 'demo/test.ts'
-# plugins:
-#   csslint:
-#     enabled: true
-#   editorconfig:
-#     enabled: true
-#     config:
-#       editorconfig: .editorconfig
-#   git-legal:
-#     enabled: true
-#   tslint:
-#     enabled: true
-#     config: tslint.json
-
-
-engines:
+version: '2'
+exclude_patterns:
+  - 'docs'
+  - 'documentation'
+  - 'dist'
+  - '**/*.log'
+  - '**/*.ico'
+  - 'e2e/'
+  - 'demo/assets/'
+  - 'demo/typings.d.ts'
+  - '**/*.spec.ts'
+  - '**/karma.conf.js'
+  - 'demo/polyfills.ts'
+  - 'demo/test.ts'
+plugins:
   csslint:
     enabled: true
-  duplication:
+  editorconfig:
     enabled: true
     config:
-      languages:
-      - javascript
-  eslint:
+      editorconfig: .editorconfig
+  git-legal:
     enabled: true
-  fixme:
+  tslint:
     enabled: true
-ratings:
-  paths:
-  - "**.css"
-  - "**.inc"
-  - "**.js"
-  - "**.jsx"
-  - "**.module"
-  - "**.php"
-  - "**.py"
-  - "**.rb"
-  - "**.ts"
-exclude_paths:
-- config/
-- dev-scripts
-- scripts
-- src/app
-- src/scss
-- typings
-- angular-cli.json
-- angular-cli-build.js
-- src/prism.css
+    config: tslint.json
