@@ -139,6 +139,7 @@
     <lib-ngx-dhis2-validation-rule-filter
       *ngIf="selectedFilter === 'VALIDATIONRULEGROUP'"
       [dataSelection]="selectedValidationDataElements"
+      [selectedVRGs]='selectedValidationRuleGroups'
       (update)="onFilterUpdate($event, 'VALIDATIONRULEGROUP')"
       (close)="onFilterClose($event, 'VALIDATIONRULEGROUP')"
     ></lib-ngx-dhis2-validation-rule-filter>
