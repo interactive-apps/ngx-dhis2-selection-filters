@@ -1,16 +1,17 @@
-# DHIS2 selection filters
+# DHIS2 Selection Filters Library
 
 [![Build Status](https://travis-ci.org/hisptz/ngx-dhis2-selection-filters.svg?branch=master)](https://travis-ci.org/hisptz/ngx-dhis2-selection-filters)
-[![dependencies Status](https://david-dm.org/hisptz/ngx-dhis2-selection-filters/status.svg)](https://david-dm.org/hisptz/ngx-dhis2-selection-filters)
-[![devDependencies Status](https://david-dm.org/hisptz/ngx-dhis2-selection-filters/dev-status.svg)](https://david-dm.org/hisptz/ngx-dhis2-selection-filters?type=dev)
+[![Greenkeeper badge](https://badges.greenkeeper.io/hisptz/ngx-dhis2-selection-filters.svg)](https://greenkeeper.io/)
 [![Maintainability](https://api.codeclimate.com/v1/badges/796035eabe80e66f1979/maintainability)](https://codeclimate.com/github/hisptz/ngx-dhis2-selection-filters/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/796035eabe80e66f1979/test_coverage)](https://codeclimate.com/github/hisptz/ngx-dhis2-selection-filters/test_coverage)
+[![dependencies Status](https://david-dm.org/hisptz/ngx-dhis2-selection-filters/status.svg)](https://david-dm.org/hisptz/ngx-dhis2-selection-filters)
+[![devDependencies Status](https://david-dm.org/hisptz/ngx-dhis2-selection-filters/dev-status.svg)](https://david-dm.org/hisptz/ngx-dhis2-selection-filters?type=dev)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Greenkeeper badge](https://badges.greenkeeper.io/hisptz/ngx-dhis2-selection-filters.svg)](https://greenkeeper.io/)
+
 
 Container for DHIS2 selection filters .i.e. Data, Period, Organisation uni and other based on angular 6+
 
-## installation
+## Installation
 
 `npm i @iapps/ngx-dhis2-selection-filters`
 
@@ -74,48 +75,68 @@ Outputs
 | ------------ | ------------------------------------------------------------- |
 | filterUpdate | This emitted data selection as based on what has been updated |
 
-Sample output
 
-```
-[{
-  "dimension": "ou",
-  "items": [
+### Selection Filter Component Output
+    [
+      {
+      "dimension": "ou",
+      "items": [
+        {
+          "id": "PMa2VCrupOd",
+          "name": "Kambia",
+          "level": 2,
+          "type": "ORGANISATION_UNIT"
+        },
+        {
+          "id": "at6UHUQatSo",
+          "name": "Western Area",
+          "level": 2,
+          "type": "ORGANISATION_UNIT"
+        },
+        {
+          "id": "TEQlaapDQoK",
+          "name": "Port Loko",
+          "level": 2,
+          "type": "ORGANISATION_UNIT"
+        }
+      ]
+    }, 
     {
-      "id": "PMa2VCrupOd",
-      "name": "Kambia",
-      "level": 2,
-      "type": "ORGANISATION_UNIT"
-    },
-    {
-      "id": "at6UHUQatSo",
-      "name": "Western Area",
-      "level": 2,
-      "type": "ORGANISATION_UNIT"
-    },
-    {
-      "id": "TEQlaapDQoK",
-      "name": "Port Loko",
-      "level": 2,
-      "type": "ORGANISATION_UNIT"
-    }
-  ]
-}, {
-  "dimension": "dx",
-  "items": [
-    {
-      "id": "PMa2VCewpOd",
-      "name": "ANC Coverage",
-      "type": "INDICATOR"
-    }
-  ]
-}, {
-  "dimension": "pe",
-  "items": [
-    {
-      "id": "LAST_YEAR",
-      "name": "Last year",
-      "type": "RelativeYearly"
-    }
-  ]
-}]
-```
+      "dimension": "dx",
+      "items": [
+        {
+          "id": "PMa2VCewpOd",
+          "name": "ANC Coverage",
+          "type": "INDICATOR"
+        }
+      ]
+    }, {
+      "dimension": "pe",
+      "items": [
+          {
+            "id": "LAST_YEAR",
+            "name": "Last year",
+            "type": "RelativeYearly"
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "name": "ANC",
+            "id": "UP1lctvalPn"
+          }
+        ],
+        "periodType": {
+          "id": "Monthly",
+          "name": "Monthly",
+          "rank": 3
+        },
+        "dimension": "vrg",
+        "changed": true,
+        "layout": "filters"
+      }
+    ]
+
+### LICENCE
+![GitHub](https://img.shields.io/github/license/hisptz/ngx-dhis2-selection-filters?style=for-the-badge)
