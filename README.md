@@ -23,13 +23,11 @@ If the module is to be imported in the app.module or any other feature module, t
 
 then add this in the imports
 
-```
-imports: [
-    ...
-    NgxDhis2SelectionFiltersModule,
-    ...
+    imports: [
+      ...
+      NgxDhis2SelectionFiltersModule,
+      ...
     ]
-```
 
 Once imported, dhis2 selection filters can be called in as
 
