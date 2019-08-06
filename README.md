@@ -119,6 +119,7 @@ Outputs
         ]
       },
       {
+        "dimension": "vrg",
         "items": [
           {
             "name": "ANC",
@@ -130,7 +131,6 @@ Outputs
           "name": "Monthly",
           "rank": 3
         },
-        "dimension": "vrg",
         "changed": true,
         "layout": "filters"
       }
