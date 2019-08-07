@@ -70,6 +70,12 @@
   transform: rotate(180deg);
 }
 
+.summary-selection {
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 9px;
+}
+
 @media (max-width: 500px) {
   .selection-filter-body {
     width: 95%;

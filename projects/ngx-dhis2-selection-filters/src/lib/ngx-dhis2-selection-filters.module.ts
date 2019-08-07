@@ -26,6 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgxDhis2ValidationRuleFilterModule } from '@iapps/ngx-dhis2-validation-rule-group-filter';
 
 import { NgxDhis2SelectionFiltersComponent } from './containers/ngx-dhis2-selection-filters/ngx-dhis2-selection-filters.component';
+import { SummarizeSelectionPipe } from './pipes/summarize-selection.pipe';
 
 @NgModule({
   imports: [
@@ -38,7 +39,7 @@ import { NgxDhis2SelectionFiltersComponent } from './containers/ngx-dhis2-select
     MatButtonModule,
     MatCardModule
   ],
-  declarations: [NgxDhis2SelectionFiltersComponent],
+  declarations: [NgxDhis2SelectionFiltersComponent, SummarizeSelectionPipe],
   exports: [NgxDhis2SelectionFiltersComponent]
 })
 export class NgxDhis2SelectionFiltersModule {}
