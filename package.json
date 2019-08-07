@@ -31,7 +31,7 @@
     "@iapps/ngx-dhis2-http-client": "^2.0.7",
     "@iapps/ngx-dhis2-org-unit-filter": "^1.1.20",
     "@iapps/ngx-dhis2-period-filter": "^1.0.0-beta.13",
-    "@iapps/ngx-dhis2-validation-rule-group-filter": "^1.0.0-alpha.15",
+    "@iapps/ngx-dhis2-validation-rule-group-filter": "^1.0.0-beta.1",
     "@ngrx/effects": "^8.2.0",
     "@ngrx/entity": "^8.2.0",
     "@ngrx/store": "^8.2.0",
