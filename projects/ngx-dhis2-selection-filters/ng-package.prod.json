@@ -10,7 +10,8 @@
       "@iapps/ngx-dhis2-org-unit-filter": "@iapps/ngx-dhis2-org-unit-filter",
       "@iapps/ngx-dhis2-period-filter": "@iapps/ngx-dhis2-period-filter",
       "ngx-color-picker": "ngx-color-picker",
-      "ng2-dragula": "ng2-dragula"
+      "ng2-dragula": "ng2-dragula",
+      "@iapps/ngx-dhis2-validation-rule-group-filter": "@iapps/ngx-dhis2-validation-rule-group-filter"
     }
   },
   "whitelistedNonPeerDependencies": ["."]
