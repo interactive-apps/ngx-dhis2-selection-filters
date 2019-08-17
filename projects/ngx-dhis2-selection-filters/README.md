@@ -14,24 +14,19 @@ If the module is to be imported in the app.module or any other feature module, t
 
 then add this in the imports
 
-```
-imports: [
-    ...
-    NgxDhis2SelectionFiltersModule,
-    ...
+    imports: [
+      ...
+      NgxDhis2SelectionFiltersModule,
+      ...
     ]
-```
 
 Once imported, dhis2 selection filters can be called in as
 
-```
-<ngx-dhis2-selection-filters
-  (filterUpdate)="onFilterUpdateAction($event)"
-  [dataSelections]="dataSelections"
-  [selectionFilterConfig]="selectionFilterConfig"
->
-</ngx-dhis2-selection-filters>
-```
+    <ngx-dhis2-selection-filters
+      (filterUpdate)="onFilterUpdateAction($event)"
+      [dataSelections]="dataSelections"
+      [selectionFilterConfig]="selectionFilterConfig">
+    </ngx-dhis2-selection-filters>
 
 Inputs
 
@@ -66,48 +61,64 @@ Outputs
 | ------------ | ------------------------------------------------------------- |
 | filterUpdate | This emitted data selection as based on what has been updated |
 
-Sample output
-
-```
-[{
-  "dimension": "ou",
-  "items": [
+### Selection Filter Component Output
+    [
+      {
+      "dimension": "ou",
+      "items": [
+        {
+          "id": "PMa2VCrupOd",
+          "name": "Kambia",
+          "level": 2,
+          "type": "ORGANISATION_UNIT"
+        },
+        {
+          "id": "at6UHUQatSo",
+          "name": "Western Area",
+          "level": 2,
+          "type": "ORGANISATION_UNIT"
+        },
+        {
+          "id": "TEQlaapDQoK",
+          "name": "Port Loko",
+          "level": 2,
+          "type": "ORGANISATION_UNIT"
+        }
+      ]
+    }, 
     {
-      "id": "PMa2VCrupOd",
-      "name": "Kambia",
-      "level": 2,
-      "type": "ORGANISATION_UNIT"
-    },
-    {
-      "id": "at6UHUQatSo",
-      "name": "Western Area",
-      "level": 2,
-      "type": "ORGANISATION_UNIT"
-    },
-    {
-      "id": "TEQlaapDQoK",
-      "name": "Port Loko",
-      "level": 2,
-      "type": "ORGANISATION_UNIT"
-    }
-  ]
-}, {
-  "dimension": "dx",
-  "items": [
-    {
-      "id": "PMa2VCewpOd",
-      "name": "ANC Coverage",
-      "type": "INDICATOR"
-    }
-  ]
-}, {
-  "dimension": "pe",
-  "items": [
-    {
-      "id": "LAST_YEAR",
-      "name": "Last year",
-      "type": "RelativeYearly"
-    }
-  ]
-}]
-```
+      "dimension": "dx",
+      "items": [
+        {
+          "id": "PMa2VCewpOd",
+          "name": "ANC Coverage",
+          "type": "INDICATOR"
+        }
+      ]
+    }, {
+      "dimension": "pe",
+      "items": [
+          {
+            "id": "LAST_YEAR",
+            "name": "Last year",
+            "type": "RelativeYearly"
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "name": "ANC",
+            "id": "UP1lctvalPn"
+          }
+        ],
+        "periodType": {
+          "id": "Monthly",
+          "name": "Monthly",
+          "rank": 3
+        },
+        "dimension": "vrg",
+        "changed": true,
+        "layout": "filters"
+      }
+    ]
