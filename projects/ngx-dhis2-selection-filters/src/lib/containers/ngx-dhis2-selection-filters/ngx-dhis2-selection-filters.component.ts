@@ -5,7 +5,6 @@ import { getDataElementsFromIndicators } from '../../helpers/get-data-elements-f
 import { updateSelectionFilterConfig } from '../../helpers/update-selection-filter-config.helper';
 import { SelectionFilterConfig } from '../../models/selected-filter-config.model';
 import { getLayout } from '../../helpers/get-layout.helper';
-
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ngx-dhis2-selection-filters',
