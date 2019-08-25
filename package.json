@@ -27,9 +27,9 @@
     "@angular/router": "^9.0.0-next.2",
     "@hisptz/ngx-dhis2-http-client": "^2.0.2",
     "@iapps/function-analytics": "^1.0.0-beta.18",
-    "@iapps/ngx-dhis2-data-filter": "^1.0.0-beta.13",
-    "@iapps/ngx-dhis2-http-client": "^2.0.7",
-    "@iapps/ngx-dhis2-org-unit-filter": "^1.1.20",
+    "@iapps/ngx-dhis2-data-filter": "^1.0.0-beta.15",
+    "@iapps/ngx-dhis2-http-client": "^2.0.8-beta.2",
+    "@iapps/ngx-dhis2-org-unit-filter": "^1.1.21-beta.1",
     "@iapps/ngx-dhis2-period-filter": "^1.0.0-beta.13",
     "@iapps/ngx-dhis2-validation-rule-group-filter": "^1.0.0-beta.1",
     "@ngrx/effects": "^8.2.0",
@@ -52,9 +52,9 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.802.2",
-    "@angular-devkit/build-ng-packagr": "~0.802.2",
-    "@angular/cli": "~8.2.2",
+    "@angular-devkit/build-angular": "~0.803.0",
+    "@angular-devkit/build-ng-packagr": "~0.803.0",
+    "@angular/cli": "~8.3.0",
     "@angular/compiler-cli": "^9.0.0-next.2",
     "@angular/language-service": "^9.0.0-next.2",
     "@ngrx/schematics": "^8.2.0",
@@ -75,9 +75,9 @@
     "ng-packagr": "^5.5.0",
     "protractor": "^6.0.0",
     "ts-node": "~8.3.0",
-    "tsickle": "^0.36.0",
+    "tsickle": "^0.37.0",
     "tslib": "^1.10.0",
-    "tslint": "~5.18.0",
+    "tslint": "~5.19.0",
     "typescript": "~3.5.3"
   },
   "config": {
