@@ -11,7 +11,7 @@
     "@iapps/ngx-dhis2-data-filter": "^1.0.0-beta.15",
     "@iapps/ngx-dhis2-org-unit-filter": "^1.1.21-beta.1",
     "@iapps/ngx-dhis2-period-filter": "^1.0.0-beta.6",
-    "ngx-color-picker": "^7.4.0",
+    "ngx-color-picker": "^8.2.0",
     "ng2-dragula": "^2.1.1"
   }
 }
