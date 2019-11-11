@@ -10,6 +10,8 @@ export class AppComponent {
   title = 'app';
   selectionFilterConfig: SelectionFilterConfig = {
     allowStepSelection: true,
+    disablePeriodTypeSelection: true,
+    selectedPeriodType: 'Monthly',
     stepSelections: ['dx', 'vrg', 'pe', 'ou'],
     dataFilterConfig: {
       singleSelection: true,
