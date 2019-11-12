@@ -35,7 +35,7 @@ Once imported, dhis2 selection filters can be called in as
       (filterUpdate)="onFilterUpdateAction($event)"
       [dataSelections]="dataSelections"
       [disablePeriodTypeSelection]="false"
-      [selectedPeriodType]="'BiMonthly"
+      [selectedPeriodType]="'BiMonthly'"
       [selectionFilterConfig]="selectionFilterConfig">
     </ngx-dhis2-selection-filters>
 
