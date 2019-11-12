@@ -34,6 +34,8 @@ Once imported, dhis2 selection filters can be called in as
     <ngx-dhis2-selection-filters
       (filterUpdate)="onFilterUpdateAction($event)"
       [dataSelections]="dataSelections"
+      [disablePeriodTypeSelection]="false"
+      [selectedPeriodType]="'BiMonthly"
       [selectionFilterConfig]="selectionFilterConfig">
     </ngx-dhis2-selection-filters>
 
@@ -62,7 +64,9 @@ orgUnitFilterConfig
 | showOrgUnitFilter (optional)    | Specify whether to show or hide organisation unit(ou) selection filter                                      | none          |
 | showLayout (optional)           | Specify whether to show or hide layout selection filter                                                     | false         |
 | showDynamicDimension (optional) | Specify whether to show or hide dynamic dimension selection filter                                          | true          |
-| orgUnitFilterConfig             | Org unit filter configurations, [Read more](https://www.npmjs.com/package/@iapps/ngx-dhis2-org-unit-filter) |               |
+|selectedPeriodType (optional)| Specify the selected period type| none
+|disablePeriodTypeSelection| Specify whether to disable period type selection| false
+| orgUnitFilterConfig             | Org unit filter configurations, [Read more](https://www.npmjs.com/package/@iapps/ngx-dhis2-org-unit-filter) |               |                 |
 
 Outputs
 
