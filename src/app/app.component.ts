@@ -9,16 +9,15 @@ import { SelectionFilterConfig } from 'projects/ngx-dhis2-selection-filters/src/
 export class AppComponent {
   title = 'app';
   selectionFilterConfig: SelectionFilterConfig = {
-    allowStepSelection: true,
-    disablePeriodTypeSelection: true,
-    selectedPeriodType: 'Monthly',
+    allowStepSelection: false,
     stepSelections: ['dx', 'vrg', 'pe', 'ou'],
     dataFilterConfig: {
       singleSelection: true,
       enabledSelections: ['in']
     },
     periodFilterConfig: {
-      singleSelection: true
+      singleSelection: true,
+      disablePeriodTypeSelection: false
     }
   };
 

@@ -9,18 +9,14 @@ import { getLayout } from '../../helpers/get-layout.helper';
   // tslint:disable-next-line:component-selector
   selector: 'ngx-dhis2-selection-filters',
   templateUrl: './ngx-dhis2-selection-filters.component.html',
-  styleUrls: ['./ngx-dhis2-selection-filters.component.css'],
+  styleUrls: ['./ngx-dhis2-selection-filters.component.css']
 })
 export class NgxDhis2SelectionFiltersComponent implements OnInit {
-  @Input()
-  dataSelections: any[];
-  @Input()
-  layout: any;
-  @Input()
-  selectionFilterConfig: SelectionFilterConfig;
+  @Input() dataSelections: any[];
+  @Input() layout: any;
+  @Input() selectionFilterConfig: SelectionFilterConfig;
 
-  @Output()
-  update: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Output() update: EventEmitter<any[]> = new EventEmitter<any[]>();
 
   showFilters: boolean;
   showFilterBody: boolean;
@@ -31,8 +27,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   selectedDynamicDimensions: any[];
   selectedDataGroups: any[];
   selectedValidationDataElements: any[];
-  selectedValidationRuleGroups: Array<{ id: string, name: string }>;
-  lowestPeriodType: string;
+  selectedValidationRuleGroups: Array<{ id: string; name: string }>;
   selectedPeriods: any[];
   selectedOrgUnits: any[];
 
@@ -46,7 +41,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
       this.dataSelections = [];
     }
 
-    // set selection paremeters
+    // set selection parameters
     this._setSelectionParameters();
 
     // set current filter
@@ -94,7 +89,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
               return {
                 ...selectedItem,
                 layout: selectedItemKey,
-                layoutOrder: selectedItemIndex,
+                layoutOrder: selectedItemIndex
               };
             }
           );
@@ -105,14 +100,14 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
         _.map(this.dataSelections || [], (dataSelection: any) => {
           const availableDataSelectionLayout = _.find(layouts, [
             'value',
-            dataSelection.dimension,
+            dataSelection.dimension
           ]);
 
           return availableDataSelectionLayout
             ? {
                 ...dataSelection,
                 layout: availableDataSelectionLayout.layout,
-                layoutOrder: availableDataSelectionLayout.layoutOrder,
+                layoutOrder: availableDataSelectionLayout.layoutOrder
               }
             : dataSelection;
         }),
@@ -132,41 +127,41 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
           _.each(selectedItems, (selectedItem: any) => {
             this.dataSelections = !_.find(this.dataSelections, [
               'dimension',
-              selectedItem.dimension,
+              selectedItem.dimension
             ])
               ? [
                   ...(this.dataSelections || []),
                   {
                     ...selectedItem,
                     layout:
-                      selectedItem.layout || getLayout(selectedItem.dimension),
-                  },
+                      selectedItem.layout || getLayout(selectedItem.dimension)
+                  }
                 ]
               : [
                   ...this.updateDataSelectionWithNewSelections(
                     this.dataSelections || [],
                     selectedItem
-                  ),
+                  )
                 ];
           });
         } else if (selectedItems.items.length > 0) {
           this.dataSelections = !_.find(this.dataSelections, [
             'dimension',
-            selectedItems.dimension,
+            selectedItems.dimension
           ])
             ? [
                 ...(this.dataSelections || []),
                 {
                   ...selectedItems,
                   layout:
-                    selectedItems.layout || getLayout(selectedItems.dimension),
-                },
+                    selectedItems.layout || getLayout(selectedItems.dimension)
+                }
               ]
             : [
                 ...this.updateDataSelectionWithNewSelections(
                   this.dataSelections || [],
                   selectedItems
-                ),
+                )
               ];
         }
       }
@@ -191,7 +186,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
               return {
                 ...selectedItem,
                 layout: selectedItemKey,
-                layoutOrder: selectedItemIndex,
+                layoutOrder: selectedItemIndex
               };
             }
           );
@@ -202,7 +197,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
         _.map(this.dataSelections || [], (dataSelection: any) => {
           const availableDataSelectionLayout = _.find(layouts, [
             'value',
-            dataSelection.dimension,
+            dataSelection.dimension
           ]);
 
           return availableDataSelectionLayout
@@ -210,7 +205,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
                 ...dataSelection,
                 changed: true,
                 layout: availableDataSelectionLayout.layout,
-                layoutOrder: availableDataSelectionLayout.layoutOrder,
+                layoutOrder: availableDataSelectionLayout.layoutOrder
               }
             : { ...dataSelection, changed: true };
         }),
@@ -228,41 +223,41 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
         _.each(selectedItems, (selectedItem: any) => {
           this.dataSelections = !_.find(this.dataSelections, [
             'dimension',
-            selectedItem.dimension,
+            selectedItem.dimension
           ])
             ? [
                 ...(this.dataSelections || []),
                 {
                   ...selectedItem,
                   layout:
-                    selectedItem.layout || getLayout(selectedItem.dimension),
-                },
+                    selectedItem.layout || getLayout(selectedItem.dimension)
+                }
               ]
             : [
                 ...this.updateDataSelectionWithNewSelections(
                   this.dataSelections || [],
                   selectedItem
-                ),
+                )
               ];
         });
       } else {
         this.dataSelections = !_.find(this.dataSelections, [
           'dimension',
-          selectedItems.dimension,
+          selectedItems.dimension
         ])
           ? [
               ...(this.dataSelections || []),
               {
                 ...selectedItems,
                 layout:
-                  selectedItems.layout || getLayout(selectedItems.dimension),
-              },
+                  selectedItems.layout || getLayout(selectedItems.dimension)
+              }
             ]
           : [
               ...this.updateDataSelectionWithNewSelections(
                 this.dataSelections || [],
                 selectedItems
-              ),
+              )
             ];
       }
     }
@@ -281,7 +276,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
   ): any[] {
     const selectedDimension = _.find(dataSelections, [
       'dimension',
-      selectedObject.dimension,
+      selectedObject.dimension
     ]);
     const selectedDimensionIndex = selectedDimension
       ? dataSelections.indexOf(selectedDimension)
@@ -290,7 +285,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
       ? [
           ...dataSelections.slice(0, selectedDimensionIndex),
           { ...selectedDimension, ...selectedObject },
-          ...dataSelections.slice(selectedDimensionIndex + 1),
+          ...dataSelections.slice(selectedDimensionIndex + 1)
         ]
       : dataSelections
       ? [...dataSelections, selectedObject]
@@ -318,8 +313,13 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
     this.selectedDataGroups = dataObject ? dataObject.groups : [];
 
     // set validation rule group
-    const validationRuleGroupObject = _.find(this.dataSelections, ['dimension', 'vrg']);
-    this.selectedValidationRuleGroups = validationRuleGroupObject ? validationRuleGroupObject.items : [];
+    const validationRuleGroupObject = _.find(this.dataSelections, [
+      'dimension',
+      'vrg'
+    ]);
+    this.selectedValidationRuleGroups = validationRuleGroupObject
+      ? validationRuleGroupObject.items
+      : [];
 
     // set periods
     const periodObject = _.find(this.dataSelections, ['dimension', 'pe']);
@@ -337,12 +337,18 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
     // set lowest period type
     const validationRuleGroup = _.find(this.dataSelections, [
       'dimension',
-      'vrg',
+      'vrg'
     ]);
-    this.lowestPeriodType =
-      validationRuleGroup && validationRuleGroup.periodType
-        ? validationRuleGroup.periodType.id
-        : '';
+
+    if (
+      this.selectionFilterConfig &&
+      this.selectionFilterConfig.periodFilterConfig
+    ) {
+      this.selectionFilterConfig.periodFilterConfig.lowestPeriodType =
+        validationRuleGroup && validationRuleGroup.periodType
+          ? validationRuleGroup.periodType.id
+          : '';
+    }
 
     // set layout
     const layoutItem = _.groupBy(
@@ -350,7 +356,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
         return {
           name: dataSelection.name,
           value: dataSelection.dimension,
-          layout: dataSelection.layout,
+          layout: dataSelection.layout
         };
       }),
       'layout'

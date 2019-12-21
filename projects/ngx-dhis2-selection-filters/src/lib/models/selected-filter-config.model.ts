@@ -18,7 +18,6 @@ export interface SelectionFilterConfig {
   orgUnitFilterConfig?: OrgUnitFilterConfig;
   dataFilterConfig?: DataFilterConfig;
   periodFilterConfig?: PeriodFilterConfig;
-  selectedPeriodType?: string;
   disablePeriodTypeSelection?: boolean;
   allowStepSelection?: boolean;
   stepSelections?: string[];

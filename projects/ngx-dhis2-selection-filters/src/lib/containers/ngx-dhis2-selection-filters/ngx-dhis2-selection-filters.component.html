@@ -88,11 +88,8 @@
 
     <!--period filter-->
     <ngx-dhis2-period-filter *ngIf="selectedFilter === 'PERIOD'" [selectedPeriods]="selectedPeriods"
-      [disablePeriodSelection]="true"
-      [selectedPeriodType]="selectionFilterConfig.selectedPeriodType"
-      [disablePeriodSelection]="selectionFilterConfig?.disablePeriodTypeSelection"
-      [periodFilterConfig]="selectionFilterConfig.periodFilterConfig" [lowestPeriodType]="lowestPeriodType"
-      (close)="onFilterClose($event, 'PERIOD')" (update)="onFilterUpdate($event, 'PERIOD')"></ngx-dhis2-period-filter>
+      [periodFilterConfig]="selectionFilterConfig.periodFilterConfig" (close)="onFilterClose($event, 'PERIOD')"
+      (update)="onFilterUpdate($event, 'PERIOD')"></ngx-dhis2-period-filter>
     <!--end of period filter-->
 
     <!--org unit filter-->
