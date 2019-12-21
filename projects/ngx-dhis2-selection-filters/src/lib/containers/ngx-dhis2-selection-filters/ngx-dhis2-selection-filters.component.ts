@@ -344,10 +344,13 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit {
       this.selectionFilterConfig &&
       this.selectionFilterConfig.periodFilterConfig
     ) {
-      this.selectionFilterConfig.periodFilterConfig.lowestPeriodType =
-        validationRuleGroup && validationRuleGroup.periodType
-          ? validationRuleGroup.periodType.id
-          : '';
+      this.selectionFilterConfig.periodFilterConfig = {
+        ...this.selectionFilterConfig.periodFilterConfig,
+        lowestPeriodType:
+          validationRuleGroup && validationRuleGroup.periodType
+            ? validationRuleGroup.periodType.id
+            : ''
+      };
     }
 
     // set layout
